@@ -1,13 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default ArticleInfo = (props) => {
+import ArticleList from "../components/ArticleList";
+
+export default Home = (props) => {
   const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button title="Close article info" onPress={() => navigation.goBack()} />
+      <ArticleList></ArticleList>
     </View>
   );
 };
