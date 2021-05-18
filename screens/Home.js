@@ -1,14 +1,15 @@
 import React from "react";
-import { Text, StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+import ArticleList from '../components/ArticleList';
 
 export default Home = (props) => {
     const navigation = useNavigation();
 
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text style={{ padding: 20 }}>YOUR CURRENT ECO TRACK DATA</Text>
-            <Button title="Bought Articles" onPress={() => navigation.navigate("Bought articles")} />
+            <ArticleList></ArticleList>
         </View>
     );
 };
