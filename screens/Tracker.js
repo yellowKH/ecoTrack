@@ -1,15 +1,13 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-
+import { StyleSheet, View, Text } from "react-native";
 import ArticleList from "../components/ArticleList";
+import Chart from "../components/Chart";
 
-export default Home = (props) => {
-  const navigation = useNavigation();
-
+export default Tracker = (props) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <ArticleList></ArticleList>
+      <Chart />
+      <ArticleList />
     </View>
   );
 };

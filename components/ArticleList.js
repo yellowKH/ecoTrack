@@ -15,9 +15,9 @@ export default ArticleList = (props) => {
   return (
     <FlatList
       data={displayedArticle}
-      style={{ width: "100%" }}
+      style={{ flex: 1, width: "100%" }}
       renderItem={renderItemHandler}
-      contentContainerStyle={{ alignItems: "stretch", padding: 20 }}
+      contentContainerStyle={{ alignItems: "stretch", padding: 40 }}
       keyExtractor={(item, index) => item.id}
     />
   );

@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import Tracker from "./screens/Home";
+import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
 import Scanner from "./screens/Scanner";
 import FavArticleList from "./screens/FavArticleList";

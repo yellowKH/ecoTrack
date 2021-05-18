@@ -1,15 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default ArticleItem = (props) => {
   // const pressItemHandler = () => {
   //     props.onDelete(props.id);
   // };
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       // onPress={pressItemHandler}
       style={styles.listItemBox}
+      onPress={() => navigation.navigate("Article Info")}
     >
       <Text>{props.title}</Text>
     </TouchableOpacity>
