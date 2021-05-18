@@ -4,92 +4,86 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import Home from "./screens/Home";
-import ArticleList from "./screens/ArticleList";
+import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
-import Scan from "./screens/Scan";
-import FavoriteList from "./screens/FavoriteList";
-import FavoriteArticleInfo from "./screens/FavoriteArticleInfo";
-import ScannedArticleInfo from "./screens/ScannedArticleInfo";
+import Scanner from "./screens/Scanner";
+import FavArticleList from "./screens/FavArticleList";
+import FavArticleInfo from "./screens/FavArticleInfo";
+import ScannedArticle from "./screens/ScannedArticle";
 
-function HomeScreen() {
-    return <Home />;
-}
-
-function ArticleListScreen() {
-    return <ArticleList />;
+function TrackerScreen() {
+  return <Tracker />;
 }
 
 function ArticleInfoScreen() {
-    return <ArticleInfo />;
+  return <ArticleInfo />;
 }
 
-function ScanScreen() {
-    return <Scan />;
+function ScannerScreen() {
+  return <Scanner />;
 }
 
-function ScannedArticleInfoScreen() {
-    return <ScannedArticleInfo />;
+function ScannedArticleScreen() {
+  return <ScannedArticle />;
 }
 
-function FavoriteListScreen() {
-    return <FavoriteList />;
+function FavListScreen() {
+  return <FavArticleList />;
 }
 
-function FavoriteArticleInfoScreen() {
-    return <FavoriteArticleInfo />;
+function FavArticleInfoScreen() {
+  return <FavArticleInfo />;
 }
 
-const HomeStack = createStackNavigator();
-const ScanStack = createStackNavigator();
-const FavoriteStack = createStackNavigator();
+const TrackerStack = createStackNavigator();
+const ScannerStack = createStackNavigator();
+const FavoritesStack = createStackNavigator();
 
-function HomeStackScreen() {
-    return (
-        <HomeStack.Navigator>
-            <HomeStack.Screen name="Home" component={HomeScreen} />
-            <HomeStack.Screen name="Bought articles" component={ArticleListScreen} />
-            <HomeStack.Screen name="Article" component={ArticleInfoScreen} />
-        </HomeStack.Navigator>
-    );
+function TrackerStackScreen() {
+  return (
+    <TrackerStack.Navigator>
+      <TrackerStack.Screen name="Tracker" component={TrackerScreen} />
+      <TrackerStack.Screen name="Article Info" component={ArticleInfoScreen} />
+    </TrackerStack.Navigator>
+  );
 }
 
-function ScanStackScreen() {
-    return (
-        <ScanStack.Navigator>
-            <ScanStack.Screen name="Scanner" component={ScanScreen} />
-            <ScanStack.Screen name="Scanned Article" component={ScannedArticleInfoScreen} />
-        </ScanStack.Navigator>
-    );
+function ScannerStackScreen() {
+  return (
+    <ScannerStack.Navigator>
+      <ScannerStack.Screen name="Scanner" component={ScannerScreen} />
+      <ScannerStack.Screen name="Scanned Article" component={ScannedArticleScreen} />
+    </ScannerStack.Navigator>
+  );
 }
 
-function FavoriteStackScreen() {
-    return (
-        <FavoriteStack.Navigator>
-            <FavoriteStack.Screen name="Favorites" component={FavoriteListScreen} />
-            <FavoriteStack.Screen name="Favorite Article" component={FavoriteArticleInfoScreen} />
-        </FavoriteStack.Navigator>
-    );
+function FavoritesStackScreen() {
+  return (
+    <FavoritesStack.Navigator>
+      <FavoritesStack.Screen name="Fav Article List" component={FavListScreen} />
+      <FavoritesStack.Screen name="Fav Article Info" component={FavArticleInfoScreen} />
+    </FavoritesStack.Navigator>
+  );
 }
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeStackScreen} />
-            <Tab.Screen name="Scan" component={ScanStackScreen} />
-            <Tab.Screen name="Favorites" component={FavoriteStackScreen} />
-        </Tab.Navigator>
-    );
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Tracker" component={TrackerStackScreen} />
+      <Tab.Screen name="Scanner" component={ScannerStackScreen} />
+      <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
+    </Tab.Navigator>
+  );
 }
 
 function App() {
-    return (
-        <NavigationContainer>
-            <MyTabs />
-        </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
 }
 
 export default App;

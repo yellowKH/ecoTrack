@@ -1,34 +1,31 @@
-import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import React from "react";
+import { StyleSheet, FlatList } from "react-native";
 
 // Dummy data import
-import ArticleItem from './ArticleItem'
-import { ARTICLEITEMS } from '../data/dummy-data'
+import ArticleItem from "./ArticleItem";
+import { ARTICLEITEMS } from "../data/dummy-data";
 
-export default ArticleList = props => {
+export default ArticleList = (props) => {
+  const displayedArticle = ARTICLEITEMS;
 
-    const displayedArticle = ARTICLEITEMS;
+  const renderItemHandler = (itemData) => {
+    return <ArticleItem title={itemData.item.title} />;
+  };
 
-    const renderItemHandler = itemData => {
-        return <ArticleItem
-            title={itemData.item.title}
-        />
-    }
-
-    return (
-        <FlatList
-            data={displayedArticle}
-            style={{ width: '100%' }}
-            renderItem={renderItemHandler}
-            contentContainerStyle={{ alignItems: 'stretch', padding: 20 }}
-            keyExtractor={(item, index) => item.id}
-        />
-    );
+  return (
+    <FlatList
+      data={displayedArticle}
+      style={{ flex: 1, width: "100%" }}
+      renderItem={renderItemHandler}
+      contentContainerStyle={{ alignItems: "stretch", padding: 40 }}
+      keyExtractor={(item, index) => item.id}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
-    contentContainerStyle: {
-        width: '100%',
-        alignItems: 'center'
-    },
+  contentContainerStyle: {
+    width: "100%",
+    alignItems: "center",
+  },
 });
