@@ -1,22 +1,46 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+import { LineChart } from "react-native-chart-kit";
 
 export default Chart = (props) => {
   return (
-    <View style={{ flex: 1, width: "100%", height: 100, backgroundColor: "green", justifyContent: "center", alignItems: "center" }}>
-      <Image
-        style={styles.chart}
-        source={{
-          uri: "https://banner2.cleanpng.com/20180802/psz/kisspng-bar-chart-clip-art-portable-network-graphics-graph-business-growth-graph-hires-smartes-online-marke-5b62ba1c1eafd0.6475180015331968281257.jpg",
-        }}
-      />
-    </View>
+    <LineChart
+      data={{
+        labels: ["January", "February", "March", "April", "May", "June"],
+        datasets: [
+          {
+            data: [Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100],
+          },
+        ],
+      }}
+      width={Dimensions.get("window").width} // from react-native
+      height={220}
+      yAxisInterval={1} // optional, defaults to 1
+      chartConfig={{
+        backgroundColor: "#158915",
+        backgroundGradientFrom: "#158915",
+        backgroundGradientTo: "#1aab1a",
+        decimalPlaces: 2, // optional, defaults to 2dp
+        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        style: {
+          borderRadius: 16,
+        },
+        propsForDots: {
+          r: "6",
+          strokeWidth: "2",
+          stroke: "#ffa726",
+        },
+      }}
+      bezier
+      style={styles.chart}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   chart: {
-    width: "90%",
-    height: "90%",
+    margin: 8,
+    borderRadius: 16,
   },
 });
