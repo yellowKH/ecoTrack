@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import Speedometer from "../components/Speedometer";
 
 export default ArticleInfo = (props) => {
-  const navigation = useNavigation();
-
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button title="Close article info" onPress={() => navigation.goBack()} />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
+      <Speedometer value={70} />
     </View>
   );
 };
