@@ -12,7 +12,11 @@ export default ArticleItem = (props) => {
     <TouchableOpacity
       // onPress={pressItemHandler}
       style={styles.listItemBox}
-      onPress={() => navigation.navigate("Article Info")}
+      onPress={() => {
+        navigation.navigate('Article Info', {
+          title: props.title,
+        });
+      }}
     >
       <Text>{props.title}</Text>
     </TouchableOpacity>
