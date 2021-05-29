@@ -3,6 +3,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet, View, Button, Text } from "react-native";
 
 import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
@@ -15,8 +16,9 @@ function TrackerScreen() {
   return <Tracker />;
 }
 
-function ArticleInfoScreen() {
-  return <ArticleInfo />;
+function ArticleInfoScreen({ route, navigation }) {
+  const { title } = route.params;
+  return <ArticleInfo title={title} />;
 }
 
 function ScannerScreen() {
