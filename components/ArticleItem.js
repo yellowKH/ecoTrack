@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default ArticleItem = (props) => {
@@ -20,11 +20,9 @@ export default ArticleItem = (props) => {
         });
       }}
     >
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Image source={{ uri: props.imgSrc }} style={{ width: 40, height: 40 }} />
-        <Text>{props.title}</Text>
-        <Text>{props.quantity}</Text>
-      </View>
+      <Image source={{ uri: props.imgSrc }} style={{ width: 40, height: 40 }} />
+      <Text style={{ width: 150 }}>{props.title}</Text>
+      <Text>{props.quantity}x</Text>
     </TouchableOpacity>
   );
 };
@@ -32,10 +30,12 @@ export default ArticleItem = (props) => {
 const styles = StyleSheet.create({
   listItemBox: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 15,
     height: 50,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 10,
