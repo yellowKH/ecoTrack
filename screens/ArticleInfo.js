@@ -5,11 +5,13 @@ import Speedometer from "../components/Speedometer";
 
 export default ArticleInfo = (props) => {
   const route = useRoute();
-  const { title, score } = route.params;
+  const { title, score, quantity } = route.params;
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
-      <Text>{JSON.stringify(title)}</Text>
+      <Text>
+        {title} {quantity}x
+      </Text>
       <Speedometer value={score} />
     </View>
   );

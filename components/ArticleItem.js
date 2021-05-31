@@ -16,6 +16,7 @@ export default ArticleItem = (props) => {
         navigation.navigate("Article Info", {
           title: props.title,
           score: props.score,
+          quantity: props.quantity,
         });
       }}
     >
