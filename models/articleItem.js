@@ -1,9 +1,10 @@
 class ArticleItem {
-  constructor(id, title, description, isFav) {
+  constructor(id, title, description, imgSrc, score) {
     this.id = id;
     this.title = title;
     this.description = description;
-    this.isFav = isFav;
+    this.imgSrc = imgSrc;
+    this.score = score;
   }
 }
 
