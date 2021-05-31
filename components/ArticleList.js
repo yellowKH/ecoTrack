@@ -3,13 +3,13 @@ import { StyleSheet, FlatList } from "react-native";
 
 // Dummy data import
 import ArticleItem from "./ArticleItem";
-import { ARTICLEITEMS } from "../data/dummy-data";
+import { BOUGHTITEMS } from "../data/dummy-data";
 
 export default ArticleList = (props) => {
-  const displayedArticle = ARTICLEITEMS;
+  const displayedArticle = BOUGHTITEMS;
 
   const renderItemHandler = (itemData) => {
-    return <ArticleItem title={itemData.item.title} />;
+    return <ArticleItem title={itemData.item.title} imgSrc={itemData.item.imgSrc} score={itemData.item.score} quantity={itemData.item.quantity} />;
   };
 
   return (

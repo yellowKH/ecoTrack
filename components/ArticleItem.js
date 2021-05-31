@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default ArticleItem = (props) => {
@@ -13,12 +13,17 @@ export default ArticleItem = (props) => {
       // onPress={pressItemHandler}
       style={styles.listItemBox}
       onPress={() => {
-        navigation.navigate('Article Info', {
+        navigation.navigate("Article Info", {
           title: props.title,
+          score: props.score,
         });
       }}
     >
-      <Text>{props.title}</Text>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image source={{ uri: props.imgSrc }} style={{ width: 40, height: 40 }} />
+        <Text>{props.title}</Text>
+        <Text>{props.quantity}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

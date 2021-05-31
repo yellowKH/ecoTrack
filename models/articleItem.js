@@ -1,10 +1,9 @@
 class ArticleItem {
-    constructor(id, title, isFav) {
-      this.id = id;
-      this.title = title;
-      this.isFav = isFav;
-    }
+  constructor(id, title, imgSrc) {
+    this.id = id;
+    this.title = title;
+    this.imgSrc = imgSrc;
   }
-  
-  export default ArticleItem;
-  
+}
+
+export default ArticleItem;

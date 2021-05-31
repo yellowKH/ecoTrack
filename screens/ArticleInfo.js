@@ -1,15 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import Speedometer from "../components/Speedometer";
 
 export default ArticleInfo = (props) => {
-  const navigation = useNavigation();
- 
+  const route = useRoute();
+  const { title, score } = route.params;
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
-      <Text>{JSON.stringify(props.title)}</Text>
-      <Speedometer value={70} />
+      <Text>{JSON.stringify(title)}</Text>
+      <Speedometer value={score} />
     </View>
   );
 };
