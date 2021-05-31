@@ -9,7 +9,13 @@ export default ArticleList = (props) => {
   const displayedArticle = BOUGHTITEMS;
 
   const renderItemHandler = (itemData) => {
-    return <ArticleItem title={itemData.item.title} imgSrc={itemData.item.imgSrc} score={itemData.item.score} quantity={itemData.item.quantity} />;
+    return <ArticleItem
+      id={itemData.item.id}
+      title={itemData.item.title}
+      description={itemData.item.description}
+      imgSrc={itemData.item.imgSrc}
+      score={itemData.item.score}
+      quantity={itemData.item.quantity} />;
   };
 
   return (
