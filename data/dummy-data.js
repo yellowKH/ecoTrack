@@ -25,6 +25,16 @@ export const ARTICLEITEMS = [
   new ArticleItem("m20", "Learn React Native", true),
 ];
 
-export const BOUGHTITEMS = [new BoughtItem("m1", "Tomaten", "https://i.dlpng.com/static/png/6573334_preview.png", 4, "5", "31-05-2021")];
+export const BOUGHTITEMS = [
+  new BoughtItem(
+    "m1",
+    "Tomaten",
+    "Super delicious tomatos",
+    "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg",
+    4,
+    "5",
+    "31-05-2021"
+  ),
+];
 
 export const FAVORIZEDITEMS = [];
