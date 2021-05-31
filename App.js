@@ -18,7 +18,8 @@ function TrackerScreen() {
 
 function ArticleInfoScreen({ route, navigation }) {
   const { title } = route.params;
-  return <ArticleInfo title={title} />;
+  const { description } = route.params;
+  return <ArticleInfo title={title} description={description} />;
 }
 
 function ScannerScreen() {

@@ -9,7 +9,11 @@ export default ArticleList = (props) => {
   const displayedArticle = ARTICLEITEMS;
 
   const renderItemHandler = (itemData) => {
-    return <ArticleItem title={itemData.item.title} />;
+    return <ArticleItem
+      id={itemData.item.id}
+      title={itemData.item.title}
+      description={itemData.item.description}
+      isFav={itemData.item.isFav} />;
   };
 
   return (
