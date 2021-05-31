@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Speedometer from "../components/Speedometer";
 import ArticleDescription from "../components/ArticleDescription";
+import Speedometer from "../components/Speedometer";
 
 export default ArticleInfo = (props) => {
   
