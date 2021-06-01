@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { useNavigation } from "@react-navigation/native";
-import { ARTICLEITEMS } from "../data/dummy-data";
+import { ArticleContext } from "../data/ArticleContext";
 
 export default function App() {
+  const [articleData] = useContext(ArticleContext);
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const navigation = useNavigation();
-  const displayedArticle = ARTICLEITEMS;
 
   useEffect(() => {
     (async () => {
@@ -24,7 +24,7 @@ export default function App() {
   };
 
   const findArticleWithBarCode = (data) => {
-    navigation.navigate("Scanned Article", { scannedArticle: displayedArticle.find((item) => item.id === data) });
+    navigation.navigate("Scanned Article", { scannedArticle: articleData.articles.find((item) => item.id === data) });
   };
 
   if (hasPermission === null) {
