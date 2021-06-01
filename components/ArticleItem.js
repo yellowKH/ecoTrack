@@ -21,7 +21,6 @@ export default ArticleItem = (props) => {
 
   return (
     <TouchableOpacity
-      // onPress={pressItemHandler}
       style={styles.listItemBox}
       onPress={() => {
         navigation.navigate("Article Info", {
