@@ -1,18 +1,41 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, View, Text, Image, Button } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Speedometer from "../components/Speedometer";
-import { BOUGHTITEMS } from "../data/dummy-data";
+import ArticleDescription from "../components/ArticleDescription";
+import { ArticleContext } from "../data/ArticleContext";
+import BoughtItem from "../models/boughtItem";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
   const { scannedArticle } = route.params;
+  const [articleData, setArticleData] = useContext(ArticleContext);
+  const [quantity, setQuantity] = useState(1);
 
   const addArticle = () => {
-    BOUGHTITEMS.push(scannedArticle);
+    boughtArcticleGenerator();
     navigation.popToTop();
     navigation.navigate("Tracker");
+  };
+
+  boughtArcticleGenerator = () => {
+    let newBoughtArticles = articleData.boughtArticles;
+    newBoughtArticles.push(
+      new BoughtItem(
+        scannedArticle.id,
+        scannedArticle.title,
+        scannedArticle.description,
+        scannedArticle.imgSrc,
+        scannedArticle.score,
+        quantity,
+        new Date().toDateString()
+      )
+    );
+    setArticleData((articleData) => ({
+      articles: articleData.articles,
+      boughtArticles: newBoughtArticles,
+    }));
   };
 
   return (
@@ -39,9 +62,24 @@ export default ScannedArticle = (props) => {
           }}
         />
       </View>
+      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "30%", alignItems: "center" }}>
+        <Button
+          title="-"
+          onPress={() => {
+            if (quantity != 1) setQuantity(quantity - 1);
+          }}
+        />
+        <Text>{quantity}</Text>
+        <Button
+          title="+"
+          onPress={() => {
+            setQuantity(quantity + 1);
+          }}
+        />
+      </View>
 
       <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
-      <Text>{scannedArticle.description}</Text>
+      <ArticleDescription description={scannedArticle.description} />
       <Speedometer value={scannedArticle.score} />
     </View>
   );
