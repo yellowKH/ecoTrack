@@ -8,7 +8,6 @@ export default ArticleItem = (props) => {
   //     props.onDelete(props.id);
   // };
   const navigation = useNavigation();
-  console.log(props.imgSrc)
   return (
     <TouchableOpacity
       // onPress={pressItemHandler}
@@ -20,12 +19,10 @@ export default ArticleItem = (props) => {
           score: props.score,
           quantity: props.quantity,
           imgSrc: props.imgSrc,
-          
         });
       }}
     >
-      <ArticleImage source={props.imgSrc} />
-
+      <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
       <Text style={{ width: 150 }}>{props.title}</Text>
       <Text>{props.quantity}x</Text>
       

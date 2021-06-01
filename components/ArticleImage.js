@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {StyleSheet, Text, Image, TouchableOpacity, View} from 'react-native'
-
+import {StyleSheet, Text, Image, View} from 'react-native'
 
 export default ArticleImage = (props) => {
     return (
         <View>
             <Image
-            style={{width: 40, height:40}}
+            style={{width: props.width, height: props.height}}
             source={{uri: props.imgSrc}} 
             
             />
