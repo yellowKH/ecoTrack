@@ -9,6 +9,7 @@ export default ArticleImage = (props) => {
             <Image
             style={{width: 40, height:40}}
             source={{uri: props.imgSrc}} 
+            
             />
         </View>
     );
