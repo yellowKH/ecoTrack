@@ -40,7 +40,7 @@ export default ScannedArticle = (props) => {
         />
       </View>
 
-      <Image source={{ uri: scannedArticle.imgSrc }} style={{ width: 200, height: 200 }} />
+      <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
       <Text>{scannedArticle.description}</Text>
       <Speedometer value={scannedArticle.score} />
     </View>
