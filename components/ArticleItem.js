@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import ArticleImage from "./ArticleImage";
 
 export default ArticleItem = (props) => {
   // const pressItemHandler = () => {
   //     props.onDelete(props.id);
   // };
   const navigation = useNavigation();
-
+  console.log(props.imgSrc)
   return (
     <TouchableOpacity
       // onPress={pressItemHandler}
@@ -18,12 +19,16 @@ export default ArticleItem = (props) => {
           description: props.description,
           score: props.score,
           quantity: props.quantity,
+          imgSrc: props.imgSrc,
+          
         });
       }}
     >
-      <Image source={{ uri: props.imgSrc }} style={{ width: 40, height: 40 }} />
+      <ArticleImage source={props.imgSrc} />
+
       <Text style={{ width: 150 }}>{props.title}</Text>
       <Text>{props.quantity}x</Text>
+      
     </TouchableOpacity>
   );
 };
