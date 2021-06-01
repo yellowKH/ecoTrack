@@ -15,6 +15,7 @@ export default ArticleItem = (props) => {
       onPress={() => {
         navigation.navigate("Article Info", {
           title: props.title,
+          imgSrc: props.imgSrc,
           description: props.description,
           score: props.score,
           quantity: props.quantity,
