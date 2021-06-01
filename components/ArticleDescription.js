@@ -5,6 +5,7 @@ export default ArticleDescription = (props) => {
   
   return (
     <Text>{JSON.stringify(props.description)}</Text>
+    
   );
 };
 
