@@ -1,16 +1,26 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, Text, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ArticleImage from "./ArticleImage";
+import { ArticleContext } from "../data/ArticleContext";
 
 export default ArticleItem = (props) => {
-  // const pressItemHandler = () => {
-  //     props.onDelete(props.id);
-  // };
+  const [articleData, setArticleData] = useContext(ArticleContext);
   const navigation = useNavigation();
+
+  const pressItemHandler = () => {
+    let newBoughtArticles = articleData.boughtArticles;
+    let toDeleteArticle = newBoughtArticles.indexOf(articleData.boughtArticles.find((item) => item.id === props.id));
+    newBoughtArticles.splice(toDeleteArticle, 1);
+
+    setArticleData((articleData) => ({
+      articles: articleData.articles,
+      boughtArticles: newBoughtArticles,
+    }));
+  };
+
   return (
     <TouchableOpacity
-      // onPress={pressItemHandler}
       style={styles.listItemBox}
       onPress={() => {
         navigation.navigate("Article Info", {
@@ -23,9 +33,14 @@ export default ArticleItem = (props) => {
       }}
     >
       <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
-      <Text style={{ width: 150 }}>{props.title}</Text>
+      <Text>{props.title}</Text>
       <Text>{props.quantity}x</Text>
-      
+      <Button
+        title="X"
+        onPress={() => {
+          pressItemHandler();
+        }}
+      />
     </TouchableOpacity>
   );
 };

@@ -1,9 +1,8 @@
 import "react-native-gesture-handler";
-import * as React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, View, Button, Text } from "react-native";
 
 import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
@@ -11,6 +10,8 @@ import Scanner from "./screens/Scanner";
 import FavArticleList from "./screens/FavArticleList";
 import FavArticleInfo from "./screens/FavArticleInfo";
 import ScannedArticle from "./screens/ScannedArticle";
+import { ArticleContext } from "./data/ArticleContext";
+import { BOUGHTITEMS, ARTICLEITEMS } from "./data/dummy-data";
 
 function TrackerScreen() {
   return <Tracker />;
@@ -79,12 +80,14 @@ function MyTabs() {
   );
 }
 
-function App() {
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
-}
+export default (App) => {
+  const [articleData, setArticleData] = useState({ articles: ARTICLEITEMS, boughtArticles: BOUGHTITEMS });
 
-export default App;
+  return (
+    <ArticleContext.Provider value={[articleData, setArticleData]}>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+    </ArticleContext.Provider>
+  );
+};
