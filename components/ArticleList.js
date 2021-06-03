@@ -4,6 +4,7 @@ import { StyleSheet, FlatList } from "react-native";
 // Dummy data import
 import ArticleItem from "./ArticleItem";
 import { ArticleContext } from "../data/ArticleContext";
+import Placeholder from "./Placeholder";
 
 export default ArticleList = (props) => {
   const [articleData] = useContext(ArticleContext);
@@ -28,6 +29,7 @@ export default ArticleList = (props) => {
       renderItem={renderItemHandler}
       contentContainerStyle={{ alignItems: "stretch", padding: 40 }}
       keyExtractor={(item, index) => item.id}
+      ListEmptyComponent={<Placeholder />}
     />
   );
 };
