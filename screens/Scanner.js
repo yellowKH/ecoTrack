@@ -22,8 +22,9 @@ export default function App() {
     const foundArticle = articleData.articles.find((item) => item.id === data);
     if (!foundArticle) {
       alert(`No article with bar code ${data} found!`);
+    } else {
+      navigateToArticle(foundArticle);
     }
-    navigateToArticle(foundArticle);
   };
 
   const navigateToArticle = (article) => {
