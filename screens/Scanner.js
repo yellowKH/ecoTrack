@@ -17,14 +17,18 @@ export default function App() {
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    findArticleWithBarCode(data);
+    const foundArticle = articleData.articles.find((item) => item.id === data);
+    if (foundArticle) {
+      alert(`Bar code ${data} has been scanned!`);
+      navigateToArticle(foundArticle);
+    }
+    alert(`No article with bar code ${data} found!`);
   };
 
-  const findArticleWithBarCode = (data) => {
-    navigation.navigate("Scanned Article", { scannedArticle: articleData.articles.find((item) => item.id === data) });
+  const navigateToArticle = (article) => {
+    navigation.navigate("Scanned Article", { scannedArticle: article });
   };
 
   if (hasPermission === null) {
