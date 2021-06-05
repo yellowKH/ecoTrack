@@ -3,13 +3,18 @@ import { StyleSheet, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export default Chart = (props) => {
+  let dataset = props.scores;
+  if (!dataset.length) {
+    dataset = [0, 0, 0, 0, 0, 0];
+  }
+
   return (
     <LineChart
       data={{
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: [],
         datasets: [
           {
-            data: [Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100],
+            data: dataset,
           },
         ],
       }}
@@ -18,8 +23,8 @@ export default Chart = (props) => {
       yAxisInterval={1} // optional, defaults to 1
       chartConfig={{
         backgroundColor: "#158915",
-        backgroundGradientFrom: "#158915",
-        backgroundGradientTo: "#1aab1a",
+        backgroundGradientFrom: "#A8A8A8",
+        backgroundGradientTo: "#DCDCDC",
         decimalPlaces: 2, // optional, defaults to 2dp
         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -29,7 +34,7 @@ export default Chart = (props) => {
         propsForDots: {
           r: "6",
           strokeWidth: "2",
-          stroke: "#ffa726",
+          stroke: "#4c4cff",
         },
       }}
       bezier
