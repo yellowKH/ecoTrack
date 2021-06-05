@@ -12,15 +12,42 @@ export default ScannedArticle = (props) => {
   const { scannedArticle } = route.params;
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
+  const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
+  let newBoughtArticles = articleData.boughtArticles;
 
   const addArticle = () => {
-    boughtArcticleGenerator();
+    if (foundArticle) {
+      updateFoundArticle();
+    } else {
+      boughtArcticleGenerator();
+    }
     navigation.popToTop();
     navigation.navigate("Tracker");
   };
 
-  boughtArcticleGenerator = () => {
-    let newBoughtArticles = articleData.boughtArticles;
+  const updateFoundArticle = () => {
+    let toUpdateArticle = newBoughtArticles.indexOf(foundArticle);
+    newBoughtArticles.splice(toUpdateArticle, 1);
+    newBoughtArticles.push(
+      new BoughtItem(
+        scannedArticle.id,
+        scannedArticle.title,
+        scannedArticle.description,
+        scannedArticle.imgSrc,
+        scannedArticle.score,
+        foundArticle.quantity + quantity,
+        new Date().toDateString()
+      )
+    );
+    setArticleData((articleData) => ({
+      articles: articleData.articles,
+      boughtArticles: newBoughtArticles,
+      scores: articleData.scores,
+      average: articleData.average,
+    }));
+  };
+
+  const boughtArcticleGenerator = () => {
     newBoughtArticles.push(
       new BoughtItem(
         scannedArticle.id,
