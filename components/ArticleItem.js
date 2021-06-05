@@ -8,7 +8,7 @@ export default ArticleItem = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const navigation = useNavigation();
 
-  const pressItemHandler = () => {
+  const deleteArticleHandler = () => {
     let newBoughtArticles = articleData.boughtArticles;
     let toDeleteArticle = newBoughtArticles.indexOf(articleData.boughtArticles.find((item) => item.id === props.id));
 
@@ -17,7 +17,7 @@ export default ArticleItem = (props) => {
     let newScores = articleData.scores;
     newScores.splice(toDeleteArticle, 1);
 
-    let newAverage = newScores.length !== 0 ? eval(newScores.join("+") / newScores.length) : 0;
+    let newAverage = newScores.length !== 0 ? (eval(newScores.join("+")) / newScores.length).toFixed(2) : 0;
 
     setArticleData((articleData) => ({
       articles: articleData.articles,
@@ -46,7 +46,7 @@ export default ArticleItem = (props) => {
       <Button
         title="X"
         onPress={() => {
-          pressItemHandler();
+          deleteArticleHandler();
         }}
       />
     </TouchableOpacity>

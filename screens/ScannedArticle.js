@@ -36,7 +36,7 @@ export default ScannedArticle = (props) => {
     let newScores = articleData.scores;
     newScores.push(scannedArticle.score);
 
-    let newAverage = eval(newScores.join("+")) / newScores.length;
+    let newAverage = (eval(newScores.join("+")) / newScores.length).toFixed(2);
 
     setArticleData((articleData) => ({
       articles: articleData.articles,

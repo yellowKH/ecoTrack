@@ -61,7 +61,7 @@ export const ARTICLEITEMS = [
 
   new ArticleItem("237394", "Lemons 500g", "If life give you lemons, make lemonade", "https://e7.pngegg.com/pngimages/577/255/png-clipart-lemon-lemon.png", 5),
 
-  new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7.5),
+  new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7),
 ];
 
 export const BOUGHTITEMS = [];
