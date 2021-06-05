@@ -16,7 +16,6 @@ export default ArticleItem = (props) => {
 
     let newScores = articleData.scores;
     newScores.splice(toDeleteArticle, 1);
-    console.log(newScores);
 
     let newAverage = newScores.length !== 0 ? eval(newScores.join("+") / newScores.length) : 0;
 
