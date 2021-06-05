@@ -20,11 +20,10 @@ export default function App() {
   const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     const foundArticle = articleData.articles.find((item) => item.id === data);
-    if (foundArticle) {
-      alert(`Bar code ${data} has been scanned!`);
-      navigateToArticle(foundArticle);
+    if (!foundArticle) {
+      alert(`No article with bar code ${data} found!`);
     }
-    alert(`No article with bar code ${data} found!`);
+    navigateToArticle(foundArticle);
   };
 
   const navigateToArticle = (article) => {
