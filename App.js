@@ -11,7 +11,7 @@ import FavArticleList from "./screens/FavArticleList";
 import FavArticleInfo from "./screens/FavArticleInfo";
 import ScannedArticle from "./screens/ScannedArticle";
 import { ArticleContext } from "./data/ArticleContext";
-import { BOUGHTITEMS, ARTICLEITEMS } from "./data/dummy-data";
+import { BOUGHTITEMS, ARTICLEITEMS, CO2SCORES, AVERAGESCORE } from "./data/dummy-data";
 
 function TrackerScreen() {
   return <Tracker />;
@@ -81,8 +81,7 @@ function MyTabs() {
 }
 
 export default (App) => {
-  const [articleData, setArticleData] = useState({ articles: ARTICLEITEMS, boughtArticles: BOUGHTITEMS });
-
+  const [articleData, setArticleData] = useState({ articles: ARTICLEITEMS, boughtArticles: BOUGHTITEMS, scores: CO2SCORES, average: AVERAGESCORE });
   return (
     <ArticleContext.Provider value={[articleData, setArticleData]}>
       <NavigationContainer>
