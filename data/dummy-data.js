@@ -10,7 +10,7 @@ export const ARTICLEITEMS = [
     "https://toppng.com/uploads/preview/coca-cola-bottle-11528338683o0snrfbxt5.png",
     2
   ),
-  
+
   new ArticleItem(
     "837423",
     "Melitta Filtercoffee 500g",
@@ -19,13 +19,7 @@ export const ARTICLEITEMS = [
     3
   ),
 
-   new ArticleItem(
-    "238764",
-    "Peanuts 50g",
-    "The best good looking peanuts",
-    "https://pngimg.com/uploads/peanut/peanut_PNG41.png",
-    10
-  ),  
+  new ArticleItem("238764", "Peanuts 50g", "The best good looking peanuts", "https://pngimg.com/uploads/peanut/peanut_PNG41.png", 10),
 
   new ArticleItem(
     "244838",
@@ -43,21 +37,9 @@ export const ARTICLEITEMS = [
     5
   ),
 
-  new ArticleItem(
-    "342358",
-    "Rice 1kg",
-    "Buy Rice, then you are nice",
-    "https://e7.pngegg.com/pngimages/597/57/png-clipart-rice-meter-rice.png",
-    1
-  ),
-  
-  new ArticleItem(
-    "122934",
-    "Eggs 6pcs",
-    "Different looking cute Eggs",
-    "https://e7.pngegg.com/pngimages/979/262/png-clipart-eggs-eggs-thumbnail.png",
-    8
-  ),
+  new ArticleItem("342358", "Rice 1kg", "Buy Rice, then you are nice", "https://e7.pngegg.com/pngimages/597/57/png-clipart-rice-meter-rice.png", 1),
+
+  new ArticleItem("122934", "Eggs 6pcs", "Different looking cute Eggs", "https://e7.pngegg.com/pngimages/979/262/png-clipart-eggs-eggs-thumbnail.png", 8),
 
   new ArticleItem(
     "823726",
@@ -74,36 +56,18 @@ export const ARTICLEITEMS = [
     "https://www.konsum-leipzig.de/media/image/fe/9a/43/DV019_4008452027602_PERewUfzmtDRKNrk_600x600.png",
     9
   ),
-    
-  new ArticleItem(
-    "584523",
-    "Onions 1kg",
-    "Fresh and good onions",
-    "http://assets.stickpng.com/images/580b57fcd9996e24bc43c21d.png",
-    10
-  ),
 
-  new ArticleItem(
-    "237394",
-    "Lemons 500g",
-    "If life give you lemons, make lemonade",
-    "https://e7.pngegg.com/pngimages/577/255/png-clipart-lemon-lemon.png",
-    5
-  ),
+  new ArticleItem("584523", "Onions 1kg", "Fresh and good onions", "http://assets.stickpng.com/images/580b57fcd9996e24bc43c21d.png", 10),
 
+  new ArticleItem("237394", "Lemons 500g", "If life give you lemons, make lemonade", "https://e7.pngegg.com/pngimages/577/255/png-clipart-lemon-lemon.png", 5),
 
+  new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7.5),
 ];
 
-export const BOUGHTITEMS = [
-  new BoughtItem(
-    "654321",
-    "Tomaten",
-    "Super delicious tomatos",
-    "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg",
-    7.5,
-    "3",
-    "31-05-2021"
-  ),
-];
+export const BOUGHTITEMS = [];
+
+export const CO2SCORES = [];
+
+export const AVERAGESCORE = 0;
 
 export const FAVORIZEDITEMS = [];

@@ -32,9 +32,17 @@ export default ScannedArticle = (props) => {
         new Date().toDateString()
       )
     );
+
+    let newScores = articleData.scores;
+    newScores.push(scannedArticle.score);
+
+    let newAverage = eval(newScores.join("+")) / newScores.length;
+
     setArticleData((articleData) => ({
       articles: articleData.articles,
       boughtArticles: newBoughtArticles,
+      scores: newScores,
+      average: newAverage,
     }));
   };
 

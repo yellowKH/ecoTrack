@@ -11,11 +11,20 @@ export default ArticleItem = (props) => {
   const pressItemHandler = () => {
     let newBoughtArticles = articleData.boughtArticles;
     let toDeleteArticle = newBoughtArticles.indexOf(articleData.boughtArticles.find((item) => item.id === props.id));
+
     newBoughtArticles.splice(toDeleteArticle, 1);
+
+    let newScores = articleData.scores;
+    newScores.splice(toDeleteArticle, 1);
+    console.log(newScores);
+
+    let newAverage = newScores.length !== 0 ? eval(newScores.join("+") / newScores.length) : 0;
 
     setArticleData((articleData) => ({
       articles: articleData.articles,
       boughtArticles: newBoughtArticles,
+      scores: newScores,
+      average: newAverage,
     }));
   };
 
