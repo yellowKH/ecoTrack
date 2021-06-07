@@ -10,14 +10,20 @@ export default ArticleItem = (props) => {
 
   const deleteArticleHandler = () => {
     let newBoughtArticles = articleData.boughtArticles;
-    let toDeleteArticle = newBoughtArticles.indexOf(articleData.boughtArticles.find((item) => item.id === props.id));
-
-    newBoughtArticles.splice(toDeleteArticle, 1);
+    const toDeleteArticle = newBoughtArticles.find((item) => item.id === props.id);
+    let toDeleteArticleIndex = newBoughtArticles.indexOf(toDeleteArticle);
 
     let newScores = articleData.scores;
-    newScores.splice(toDeleteArticle, 1);
+    newScores = newScores - toDeleteArticle.score * newBoughtArticles[toDeleteArticleIndex].quantity;
 
-    let newAverage = newScores.length !== 0 ? (eval(newScores.join("+")) / newScores.length).toFixed(2) : 0;
+    newBoughtArticles.splice(toDeleteArticleIndex, 1);
+
+    let totalItems = 0;
+    for (let i = 0; i < newBoughtArticles.length; i++) {
+      totalItems = totalItems + newBoughtArticles[i]["quantity"];
+    }
+
+    const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
 
     setArticleData((articleData) => ({
       articles: articleData.articles,

@@ -3,15 +3,24 @@ import { StyleSheet, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export default Chart = (props) => {
-  let dataset = props.scores;
-  if (!dataset.length) {
+  const boughtArticles = props.boughtArticles;
+  const scores = [];
+  const labels = [];
+  for (let i = 0; i < boughtArticles.length; i++) {
+    scores.push(boughtArticles[i].score);
+    labels.push(boughtArticles[i].quantity);
+  }
+
+  if (!scores.length) {
     dataset = [0, 0, 0, 0, 0, 0];
+  } else {
+    dataset = scores;
   }
 
   return (
     <LineChart
       data={{
-        labels: [],
+        labels: labels,
         datasets: [
           {
             data: dataset,
