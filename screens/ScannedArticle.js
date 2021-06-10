@@ -13,21 +13,21 @@ export default ScannedArticle = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
   const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
-  let newBoughtArticles = articleData.boughtArticles;
+  const newBoughtArticles = articleData.boughtArticles;
 
   const addArticle = () => {
-    if (foundArticle) {
-      updateFoundArticle();
-    } else {
-      boughtArcticleGenerator();
-    }
+    updateBoughtArticles();
     navigation.popToTop();
     navigation.navigate("Tracker");
   };
 
-  const updateFoundArticle = () => {
-    let toUpdateArticle = newBoughtArticles.indexOf(foundArticle);
-    newBoughtArticles.splice(toUpdateArticle, 1);
+  const updateBoughtArticles = () => {
+    let totalQuantity = quantity;
+    if (foundArticle) {
+      const toUpdateArticle = newBoughtArticles.indexOf(foundArticle);
+      newBoughtArticles.splice(toUpdateArticle, 1);
+      totalQuantity = quantity + foundArticle.quantity;
+    }
     newBoughtArticles.push(
       new BoughtItem(
         scannedArticle.id,
@@ -35,35 +35,20 @@ export default ScannedArticle = (props) => {
         scannedArticle.description,
         scannedArticle.imgSrc,
         scannedArticle.score,
-        foundArticle.quantity + quantity,
-        new Date().toDateString()
-      )
-    );
-    setArticleData((articleData) => ({
-      articles: articleData.articles,
-      boughtArticles: newBoughtArticles,
-      scores: articleData.scores,
-      average: articleData.average,
-    }));
-  };
-
-  const boughtArcticleGenerator = () => {
-    newBoughtArticles.push(
-      new BoughtItem(
-        scannedArticle.id,
-        scannedArticle.title,
-        scannedArticle.description,
-        scannedArticle.imgSrc,
-        scannedArticle.score,
-        quantity,
+        totalQuantity,
         new Date().toDateString()
       )
     );
 
     let newScores = articleData.scores;
-    newScores.push(scannedArticle.score);
+    newScores = newScores + scannedArticle.score * quantity;
 
-    let newAverage = (eval(newScores.join("+")) / newScores.length).toFixed(2);
+    let totalItems = 0;
+    for (let i = 0; i < newBoughtArticles.length; i++) {
+      totalItems = totalItems + newBoughtArticles[i].quantity;
+    }
+
+    const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
 
     setArticleData((articleData) => ({
       articles: articleData.articles,

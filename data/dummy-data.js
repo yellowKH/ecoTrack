@@ -66,7 +66,7 @@ export const ARTICLEITEMS = [
 
 export const BOUGHTITEMS = [];
 
-export const CO2SCORES = [];
+export const CO2SCORES = 0;
 
 export const AVERAGESCORE = 0;
 

@@ -9,7 +9,7 @@ export default Tracker = (props) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Chart scores={articleData.scores} />
+      <Chart boughtArticles={articleData.boughtArticles} />
       <Text>Your average CO2 Score: {articleData.average}</Text>
       <ArticleList />
     </View>
