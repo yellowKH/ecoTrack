@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ArticleImage from "./ArticleImage";
@@ -9,29 +9,41 @@ export default ArticleItem = (props) => {
   const navigation = useNavigation();
 
   const deleteArticleHandler = () => {
-    let newBoughtArticles = articleData.boughtArticles;
-    const toDeleteArticle = newBoughtArticles.find((item) => item.id === props.id);
-    let toDeleteArticleIndex = newBoughtArticles.indexOf(toDeleteArticle);
+    let listedArticles = props.articles;
+    const toDeleteArticle = listedArticles.find((item) => item.id === props.id);
+    let toDeleteArticleIndex = listedArticles.indexOf(toDeleteArticle);
 
-    let newScores = articleData.scores;
-    newScores = newScores - toDeleteArticle.score * newBoughtArticles[toDeleteArticleIndex].quantity;
+    if ("quantity" in toDeleteArticle) {
+      let newScores = articleData.scores;
+      newScores = newScores - toDeleteArticle.score * listedArticles[toDeleteArticleIndex].quantity;
 
-    newBoughtArticles.splice(toDeleteArticleIndex, 1);
+      let totalItems = 0;
+      for (let i = 0; i < listedArticles.length; i++) {
+        totalItems = totalItems + listedArticles[i]["quantity"];
+      }
 
-    let totalItems = 0;
-    for (let i = 0; i < newBoughtArticles.length; i++) {
-      totalItems = totalItems + newBoughtArticles[i]["quantity"];
+      const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
+
+      listedArticles.splice(toDeleteArticleIndex, 1);
+
+      setArticleData((articleData) => ({
+        articles: articleData.articles,
+        boughtArticles: listedArticles,
+        scores: newScores,
+        average: newAverage,
+        favArticles: articleData.favArticles,
+      }));
+    } else {
+      listedArticles.splice(toDeleteArticleIndex, 1);
+
+      setArticleData((articleData) => ({
+        articles: articleData.articles,
+        boughtArticles: articleData.boughtArticles,
+        scores: articleData.scores,
+        average: articleData.average,
+        favArticles: listedArticles,
+      }));
     }
-
-    const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
-
-    setArticleData((articleData) => ({
-      articles: articleData.articles,
-      boughtArticles: newBoughtArticles,
-      scores: newScores,
-      average: newAverage,
-      favArticles: articleData.favArticles,
-    }));
   };
 
   return (
@@ -50,7 +62,7 @@ export default ArticleItem = (props) => {
     >
       <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
       <Text>{props.title}</Text>
-      <Text>{props.quantity}x</Text>
+      <Text>{props.quantity}</Text>
       <Button
         title="X"
         onPress={() => {

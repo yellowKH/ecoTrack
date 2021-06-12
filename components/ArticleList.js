@@ -16,6 +16,7 @@ export default ArticleList = (props) => {
         score={itemData.item.score}
         quantity={itemData.item.quantity}
         target={props.target}
+        articles={props.articles}
       />
     );
   };
