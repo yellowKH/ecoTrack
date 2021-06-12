@@ -10,21 +10,16 @@ export default ArticleInfo = (props) => {
   const route = useRoute();
   const { id, title, description, score, quantity, imgSrc } = route.params;
   const [articleData, setArticleData] = useContext(ArticleContext);
-  const newFavArticles = articleData.favArticles;
-  
+
   const updateFavArticles = () => {
-    newFavArticles.push(
-      new FavorizedItem(
-        {id},
-        {title},
-        {description},
-        {imgSrc},
-        new Date().toDateString()
-      )
-    );
-    // console.log({newFavArticles})
+    const newFavArticles = articleData.favArticles;
+    newFavArticles.push(new FavorizedItem(id, title, description, imgSrc, new Date().toDateString()));
     setArticleData((articleData) => ({
-      favArticles: newFavArticles
+      articles: articleData.articles,
+      boughtArticles: articleData.boughtArticles,
+      scores: articleData.scores,
+      average: articleData.average,
+      favArticles: newFavArticles,
     }));
   };
 
@@ -34,11 +29,11 @@ export default ArticleInfo = (props) => {
         {title} {quantity}x
       </Text>
       <Button
-          title="ADD FAV"
-          onPress={() => {
-            updateFavArticles();
-          }}
-        />
+        title="ADD FAV"
+        onPress={() => {
+          updateFavArticles();
+        }}
+      />
       <ArticleImage imgSrc={imgSrc} width={240} height={240} />
       <ArticleDescription description={description} />
       <Speedometer value={score} />
