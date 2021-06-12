@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { StyleSheet, View, Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
 import ArticleList from "../components/ArticleList";
 
 export default FavArticleList = (props) => {
-  const navigation = useNavigation();
   const [articleData] = useContext(ArticleContext);
 
   return (

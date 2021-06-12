@@ -30,6 +30,7 @@ export default ArticleItem = (props) => {
       boughtArticles: newBoughtArticles,
       scores: newScores,
       average: newAverage,
+      favArticles: articleData.favArticles,
     }));
   };
 

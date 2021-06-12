@@ -55,6 +55,7 @@ export default ScannedArticle = (props) => {
       boughtArticles: newBoughtArticles,
       scores: newScores,
       average: newAverage,
+      favArticles: articleData.favArticles,
     }));
   };
 
