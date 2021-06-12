@@ -45,7 +45,7 @@ export default ArticleItem = (props) => {
       }));
     }
   };
-
+  
   return (
     <TouchableOpacity
       style={styles.listItemBox}
