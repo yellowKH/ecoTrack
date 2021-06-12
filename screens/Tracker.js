@@ -11,7 +11,7 @@ export default Tracker = (props) => {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Chart boughtArticles={articleData.boughtArticles} />
       <Text>Your average CO2 Score: {articleData.average}</Text>
-      <ArticleList />
+      <ArticleList target={"Article Info"} articles={articleData.boughtArticles} />
     </View>
   );
 };

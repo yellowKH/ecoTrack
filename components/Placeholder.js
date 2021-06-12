@@ -4,7 +4,7 @@ import { StyleSheet, Text } from "react-native";
 export default Placeholder = (props) => {
 
     return (
-        <Text style={styles.message}>no items bought yet</Text>
+        <Text style={styles.message}>no items added yet</Text>
     );
 };
 

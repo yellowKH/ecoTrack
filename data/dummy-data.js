@@ -64,10 +64,10 @@ export const ARTICLEITEMS = [
   new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7),
 ];
 
-export const BOUGHTITEMS = [];
+export const BOUGHTITEMS = [new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7),];
 
 export const CO2SCORES = 0;
 
 export const AVERAGESCORE = 0;
 
-export const FAVORIZEDITEMS = [];
+export const FAVORIZEDITEMS = [new ArticleItem("654321", "Tomaten", "Super delicious tomatos", "https://www.kochschule.de/sites/default/files/images/kochwissen/461/tomate.jpg", 7),];

@@ -18,13 +18,14 @@ export default ArticleList = (props) => {
         imgSrc={itemData.item.imgSrc}
         score={itemData.item.score}
         quantity={itemData.item.quantity}
+        target={props.target}
       />
     );
   };
 
   return (
     <FlatList
-      data={articleData.boughtArticles}
+      data={props.articles}
       style={{ flex: 1, width: "100%" }}
       renderItem={renderItemHandler}
       contentContainerStyle={{ alignItems: "stretch", padding: 40 }}
