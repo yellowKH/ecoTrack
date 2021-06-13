@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StyleSheet, FlatList } from "react-native";
 
 // Dummy data import
 import ArticleItem from "./ArticleItem";
-import { ArticleContext } from "../data/ArticleContext";
 import Placeholder from "./Placeholder";
 
 export default ArticleList = (props) => {
-  const [articleData] = useContext(ArticleContext);
-
   const renderItemHandler = (itemData) => {
     return (
       <ArticleItem
@@ -18,13 +15,15 @@ export default ArticleList = (props) => {
         imgSrc={itemData.item.imgSrc}
         score={itemData.item.score}
         quantity={itemData.item.quantity}
+        target={props.target}
+        articles={props.articles}
       />
     );
   };
 
   return (
     <FlatList
-      data={articleData.boughtArticles}
+      data={props.articles}
       style={{ flex: 1, width: "100%" }}
       renderItem={renderItemHandler}
       contentContainerStyle={{ alignItems: "stretch", padding: 40 }}
