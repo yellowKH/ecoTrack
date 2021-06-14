@@ -32,7 +32,7 @@ export default ScannedArticle = (props) => {
         scannedArticle.imgSrc,
         scannedArticle.score,
         totalQuantity,
-        new Date().toDateString()
+        new Date()
       )
     );
 
