@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View, Text, Image, Button } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
@@ -12,13 +13,12 @@ export default ScannedArticle = (props) => {
   const { scannedArticle } = route.params;
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
   const newBoughtArticles = articleData.boughtArticles;
 
   const addArticle = () => {
     updateBoughtArticles();
-    navigation.popToTop();
-    navigation.navigate("Tracker");
   };
 
   const updateBoughtArticles = () => {
@@ -57,6 +57,18 @@ export default ScannedArticle = (props) => {
       average: newAverage,
       favArticles: articleData.favArticles,
     }));
+    setIsOpen(true);
+  };
+
+  const cancelScanHandler = () => {
+    setIsOpen(false);
+    navigation.popToTop();
+    navigation.navigate("Tracker");
+  };
+
+  const continueScanHandler = () => {
+    setIsOpen(false);
+    navigation.goBack();
   };
 
   return (
@@ -102,6 +114,7 @@ export default ScannedArticle = (props) => {
       <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
       <ArticleDescription description={scannedArticle.description} />
       <Speedometer value={scannedArticle.score} />
+      <AfterScan visible={modalIsOpen} onCancelScan={cancelScanHandler} onContinueScan={continueScanHandler} />
     </View>
   );
 };
