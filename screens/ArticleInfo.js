@@ -13,6 +13,8 @@ export default ArticleInfo = (props) => {
   const foundFav = articleData.favArticles.find((item) => item.id === id);
 
   const updateFavArticles = () => {
+
+
     if (!foundFav) {
       const newFavArticles = articleData.favArticles;
       newFavArticles.push(new FavorizedItem(id, title, description, imgSrc, score, new Date().toDateString()));
@@ -25,7 +27,20 @@ export default ArticleInfo = (props) => {
       }));
       Alert.alert("Article added");
     } else {
-      Alert.alert("Article already favorized!");
+      let listedArticles = articleData.favArticles;
+      const toDeleteArticle = listedArticles.find((item) => item.id === id);
+      let toDeleteArticleIndex = listedArticles.indexOf(toDeleteArticle);
+
+      listedArticles.splice(toDeleteArticleIndex, 1);
+
+      setArticleData((articleData) => ({
+        articles: articleData.articles,
+        boughtArticles: articleData.boughtArticles,
+        scores: articleData.scores,
+        average: articleData.average,
+        favArticles: listedArticles,
+      }));
+      Alert.alert("Article unfavorized");
     }
   };
 
