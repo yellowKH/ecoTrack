@@ -17,10 +17,6 @@ export default ScannedArticle = (props) => {
   const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
   const newBoughtArticles = articleData.boughtArticles;
 
-  const addArticle = () => {
-    updateBoughtArticles();
-  };
-
   const updateBoughtArticles = () => {
     let totalQuantity = quantity;
     if (foundArticle) {
@@ -85,7 +81,7 @@ export default ScannedArticle = (props) => {
         <Button
           title="Buy"
           onPress={() => {
-            addArticle();
+            updateBoughtArticles();
           }}
         />
         <Button
