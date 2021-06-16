@@ -5,6 +5,7 @@ import { ArticleContext } from "../data/ArticleContext";
 import ArticleDescription from "../components/ArticleDescription";
 import Speedometer from "../components/Speedometer";
 import FavorizedItem from "../models/favorizedItem";
+import { storeData } from "../data/AppStorage";
 
 export default ArticleInfo = (props) => {
   const route = useRoute();
@@ -42,6 +43,7 @@ export default ArticleInfo = (props) => {
       }));
       Alert.alert("Article unfavorized");
     }
+    storeData(articleData);
   };
 
   return (

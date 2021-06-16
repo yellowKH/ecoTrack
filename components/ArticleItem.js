@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ArticleImage from "./ArticleImage";
 import { ArticleContext } from "../data/ArticleContext";
+import { storeData } from '../data/AppStorage';
 
 export default ArticleItem = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
@@ -44,8 +45,9 @@ export default ArticleItem = (props) => {
         favArticles: listedArticles,
       }));
     }
+    storeData(articleData);
   };
-  
+
   return (
     <TouchableOpacity
       style={styles.listItemBox}

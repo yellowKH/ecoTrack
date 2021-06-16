@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ce3e097-97f1-4d2d-b3a6-20897ed166ba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ArticleItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ArticleItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ArticleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ArticleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Placeholder.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Placeholder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/favorizedItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/favorizedItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ArticleInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ArticleInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/FavArticleInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/FavArticleInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/FavArticleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/FavArticleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Tracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ScannedArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ScannedArticle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +43,9 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="100" width="2360" height="1200" key="AVDManager" timestamp="1623492827811">
+    <state x="100" y="100" width="2360" height="1200" key="AVDManager" timestamp="1623873430625">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="100" y="100" width="2360" height="1200" key="AVDManager/-1920.523.1920.1020/0.0.2560.1400@0.0.2560.1400" timestamp="1623492827811" />
+    <state x="100" y="100" width="2360" height="1200" key="AVDManager/-1920.523.1920.1020/0.0.2560.1400@0.0.2560.1400" timestamp="1623873430625" />
   </component>
 </project>
