@@ -40,6 +40,7 @@ function updateBoughtArticles(scannedArticle, quantity, newScores, totalQuantity
 
 function updateFavArticles(foundFav, newFavArticles, id, title, description, imgSrc, score) {
   let listedArticles;
+
   if (!foundFav) {
     newFavArticles.push(new FavorizedItem(id, title, description, imgSrc, score));
     listedArticles = newFavArticles;
@@ -49,6 +50,7 @@ function updateFavArticles(foundFav, newFavArticles, id, title, description, img
     let toDeleteArticleIndex = listedArticles.indexOf(toDeleteArticle);
     listedArticles.splice(toDeleteArticleIndex, 1);
   }
+
   return listedArticles;
 }
 
