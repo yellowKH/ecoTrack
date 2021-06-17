@@ -6,6 +6,7 @@ import Speedometer from "../components/Speedometer";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
 import BoughtItem from "../models/boughtItem";
+import { storeData } from "../data/AppStorage";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
@@ -53,6 +54,7 @@ export default ScannedArticle = (props) => {
       average: newAverage,
       favArticles: articleData.favArticles,
     }));
+    storeData(articleData);
     setIsOpen(true);
   };
 
