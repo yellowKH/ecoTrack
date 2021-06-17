@@ -5,8 +5,8 @@ import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
-import BoughtItem from "../models/boughtItem";
 import { storeData } from "../data/AppStorage";
+import { updateBoughtArticles } from "../controller/ArticleController";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
@@ -15,46 +15,32 @@ export default ScannedArticle = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
-  const newBoughtArticles = articleData.boughtArticles;
 
-  const updateBoughtArticles = () => {
-    let totalQuantity = quantity;
-    if (foundArticle) {
-      const toUpdateArticle = newBoughtArticles.indexOf(foundArticle);
-      newBoughtArticles.splice(toUpdateArticle, 1);
-      totalQuantity = quantity + foundArticle.quantity;
-    }
-    newBoughtArticles.push(
-      new BoughtItem(
-        scannedArticle.id,
-        scannedArticle.title,
-        scannedArticle.description,
-        scannedArticle.imgSrc,
-        scannedArticle.score,
-        totalQuantity,
-        new Date()
-      )
+  const updateBoughtArticlesHandler = () => {
+    const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
+    const newBoughtArticles = articleData.boughtArticles;
+    const newScores = articleData.scores;
+    const totalQuantity = quantity;
+
+    const [returnScore, returnAverage, returnBoughtArticles] = updateBoughtArticles(
+      scannedArticle,
+      quantity,
+      newScores,
+      totalQuantity,
+      foundArticle,
+      newBoughtArticles
     );
-
-    let newScores = articleData.scores;
-    newScores = newScores + scannedArticle.score * quantity;
-
-    let totalItems = 0;
-    for (let i = 0; i < newBoughtArticles.length; i++) {
-      totalItems = totalItems + newBoughtArticles[i].quantity;
-    }
-
-    const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
 
     setArticleData((articleData) => ({
       articles: articleData.articles,
-      boughtArticles: newBoughtArticles,
-      scores: newScores,
-      average: newAverage,
+      boughtArticles: returnBoughtArticles,
+      scores: returnScore,
+      average: returnAverage,
       favArticles: articleData.favArticles,
     }));
+
     storeData(articleData);
+
     setIsOpen(true);
   };
 
@@ -83,7 +69,7 @@ export default ScannedArticle = (props) => {
         <Button
           title="Buy"
           onPress={() => {
-            updateBoughtArticles();
+            updateBoughtArticlesHandler();
           }}
         />
         <Button
