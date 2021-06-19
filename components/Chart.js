@@ -3,36 +3,7 @@ import { StyleSheet, Dimensions, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export default Chart = (props) => {
-  const boughtArticles = [
-    {
-      description: "Sunny potatoes",
-      id: "244838",
-      imgSrc: "https://image.similarpng.com/very-thumbnail/2020/06/Raw-potatoes-in-burlap-bag-on-transparent-background-PNG.png",
-      quantity: 1,
-      score: 2,
-      timeStamp: "2021-06-19T16:27:30.327Z",
-      title: "Potatoes 1kg",
-    },
-    {
-      description: "Sunny potatoes",
-      id: "244838",
-      imgSrc: "https://image.similarpng.com/very-thumbnail/2020/06/Raw-potatoes-in-burlap-bag-on-transparent-background-PNG.png",
-      quantity: 1,
-      score: 4,
-      timeStamp: "2021-06-18T16:27:30.327Z",
-      title: "Potatoes 1kg",
-    },
-    {
-      description: "Sunny potatoes",
-      id: "244838",
-      imgSrc: "https://image.similarpng.com/very-thumbnail/2020/06/Raw-potatoes-in-burlap-bag-on-transparent-background-PNG.png",
-      quantity: 1,
-      score: 6,
-      timeStamp: "2021-06-19T16:27:30.327Z",
-      title: "Potatoes 1kg",
-    },
-  ];
-
+  const boughtArticles = props.boughtArticles;
   let filteredArticles = [];
   const period = props.period;
   const scores = [];
