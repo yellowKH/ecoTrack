@@ -8,6 +8,7 @@ import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
 import { storeData } from "../data/AppStorage";
 import { updateBoughtArticles, updateFavArticles } from "../controller/ArticleController";
+import { Icon } from "react-native-elements";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
@@ -16,6 +17,8 @@ export default ScannedArticle = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const foundFav = articleData.favArticles.find((item) => item.id === scannedArticle.id);
+  const [icon, setIcon] = useState(foundFav ? "heart" : "heart-o");
 
   const updateBoughtArticlesHandler = () => {
     const newBoughtArticles = articleData.boughtArticles;
@@ -46,7 +49,6 @@ export default ScannedArticle = (props) => {
 
   const updateFavArticlesHandler = () => {
     const newFavArticles = articleData.favArticles;
-    const foundFav = articleData.favArticles.find((item) => item.id === scannedArticle.id);
     const returnArticles = updateFavArticles(
       foundFav,
       newFavArticles,
@@ -68,6 +70,7 @@ export default ScannedArticle = (props) => {
     storeData(articleData);
 
     const alertText = !foundFav ? "Article added!" : "Article unfavorized!";
+    foundFav ? setIcon("heart-o") : setIcon("heart");
     Alert.alert(alertText);
   };
 
@@ -105,13 +108,8 @@ export default ScannedArticle = (props) => {
             navigation.goBack();
           }}
         />
-        <BgButton
-          text="Fav"
-          onClick={() => {
-            updateFavArticlesHandler();
-          }}
-        />
       </View>
+      <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
       <View style={{ flexDirection: "row", justifyContent: "space-around", width: "50%", alignItems: "center" }}>
         <BgButton
           text="-"
