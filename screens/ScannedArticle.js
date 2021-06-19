@@ -39,10 +39,9 @@ export default ScannedArticle = (props) => {
       favArticles: articleData.favArticles,
     }));
 
-    storeData(articleData);
-
     setIsOpen(true);
   };
+  storeData(articleData);
 
   const cancelScanHandler = () => {
     setIsOpen(false);

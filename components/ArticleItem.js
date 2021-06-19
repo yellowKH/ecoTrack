@@ -34,10 +34,8 @@ export default ArticleItem = (props) => {
         favArticles: returnArticles,
       }));
     }
-
-    storeData(articleData);
   };
-
+  storeData(articleData);
   return (
     <TouchableOpacity
       style={styles.listItemBox}
