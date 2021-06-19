@@ -9,13 +9,31 @@ export default Tracker = (props) => {
   const [period, setPeriod] = useState("total");
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
-        <Button title="day" onPress={() => setPeriod("day")} />
-        <Button title="month" onPress={() => setPeriod("month")} />
-        <Button title="year" onPress={() => setPeriod("year")} />
-        <Button title="total" onPress={() => setPeriod("total")} />
+    <View style={[styles.boxes]}>
+      <View style={{flexDirection: "row", justifyContent: "center", marginTop: 30, marginBottom: 30 }}>
+        <Button 
+        title="day" 
+        color="#6A8CAF"
+        
+        onPress={() => setPeriod("day")} />
+        <View style={styles.space} />
+        <Button
+        title="month"
+        color="#6A8CAF"
+        onPress={() => setPeriod("month")} />
+        <View style={styles.space} />
+
+        <Button 
+        title="year" 
+        color="#6A8CAF"
+        onPress={() => setPeriod("year")} />
+        <View style={styles.space} />
+        <Button 
+        title="total"
+        color="#6A8CAF"
+        onPress={() => setPeriod("total")} />
       </View>
+      <Text style = {styles.text}>Personal Consumption Chart</Text>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
       <Text>Your average CO2 Score: {articleData.average}</Text>
       <ArticleList target={"Article Info"} articles={articleData.boughtArticles} />
@@ -23,4 +41,32 @@ export default Tracker = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  space: {
+    width:35,
+    height:35
+  },
+
+  boxes: {
+     flex: 1, 
+     alignItems: "center", 
+     justifyContent: "center" ,
+     backgroundColor: "#A7E9AF"
+  },
+
+
+  text: {
+    fontSize: 22,
+    fontStyle: 'normal',
+    
+  }
+
+
+
+
+
+
+
+});
+

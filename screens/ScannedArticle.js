@@ -70,24 +70,29 @@ export default ScannedArticle = (props) => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "space-around" }}>
+    <View style={[styles.boxes]}>
       <Text>{scannedArticle.title}</Text>
       <View style={{ flexDirection: "row" }}>
         <Button
           title="Cancel"
+          color="#6A8CAF"
           onPress={() => {
             navigation.goBack();
             navigation.navigate("Tracker");
           }}
         />
+         <View style={styles.space} />
         <Button
           title="Buy"
+          color="#6A8CAF"
           onPress={() => {
             updateBoughtArticles();
           }}
         />
+         <View style={styles.space} />
         <Button
           title="Rescan"
+          color="#6A8CAF"
           onPress={() => {
             navigation.goBack();
           }}
@@ -96,13 +101,16 @@ export default ScannedArticle = (props) => {
       <View style={{ flexDirection: "row", justifyContent: "space-around", width: "30%", alignItems: "center" }}>
         <Button
           title="-"
+          color="#6A8CAF"
           onPress={() => {
             if (quantity != 1) setQuantity(quantity - 1);
           }}
         />
+        <View style={styles.space} />
         <Text>{quantity}</Text>
         <Button
           title="+"
+          color="#6A8CAF"
           onPress={() => {
             setQuantity(quantity + 1);
           }}
@@ -117,4 +125,19 @@ export default ScannedArticle = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  space: {
+    width:20,
+    height:20
+  },
+
+  boxes: {
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "space-around",
+    backgroundColor: "#75B79E"
+ },
+
+
+});

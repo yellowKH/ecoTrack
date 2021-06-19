@@ -74,6 +74,7 @@ export default Chart = (props) => {
 
 const styles = StyleSheet.create({
   chart: {
+    marginTop: 40,
     margin: 8,
     borderRadius: 16,
   },

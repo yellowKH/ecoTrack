@@ -51,5 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
+    backgroundColor: "#A7E9AF"
+
   },
 });

@@ -67,6 +67,7 @@ export default ArticleItem = (props) => {
       <Text>{props.quantity}</Text>
       <Button
         title="X"
+        color= "#6A8CAF"
         onPress={() => {
           deleteArticleHandler();
         }}

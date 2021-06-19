@@ -9,7 +9,7 @@ export default FavArticleInfo = (props) => {
   const { id, title, description, score, quantity, imgSrc } = route.params;
   
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "space-evenly" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "space-evenly",  backgroundColor: "#A7E9AF"}}>
       <Text>{title}</Text>
       <ArticleImage imgSrc={imgSrc} width={240} height={240} />
       <ArticleDescription description={description} />
@@ -18,4 +18,5 @@ export default FavArticleInfo = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+});
