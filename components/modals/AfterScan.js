@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Modal, Button, Text } from "react-native";
+import { View, StyleSheet, Modal, Text } from "react-native";
+import BgButton from "../interaction/BgButton";
 
 export default AfterScan = (props) => {
   return (
@@ -8,8 +9,8 @@ export default AfterScan = (props) => {
         <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: "white", padding: 30, opacity: 1 }}>
           <Text>Scan another product?</Text>
           <View style={{ flexDirection: "row" }}>
-            <Button title="YES" onPress={props.onContinueScan} />
-            <Button title="NO" onPress={props.onCancelScan} />
+            <BgButton text="YES" onClick={props.onContinueScan} />
+            <BgButton text="NO" onClick={props.onCancelScan} />
           </View>
         </View>
       </View>
