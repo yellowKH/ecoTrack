@@ -5,7 +5,7 @@ function deleteArticle(listedArticles, toDeleteArticle, toDeleteArticleIndex, ne
   newScores = newScores - toDeleteArticle.score * listedArticles[toDeleteArticleIndex].quantity;
 
   let totalItems = 0;
-  for (let i = 0; i < listedArticles.length; i++) {
+  for (let i = 0; i < listedArticles.length - 1; i++) {
     totalItems = totalItems + listedArticles[i]["quantity"];
   }
 
