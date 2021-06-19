@@ -1,53 +1,42 @@
-import React, { useContext, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, Button } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ArticleImage from "./ArticleImage";
 import { ArticleContext } from "../data/ArticleContext";
-import { storeData } from '../data/AppStorage';
+import { storeData } from "../data/AppStorage";
+import { deleteArticle } from "../controller/ArticleController";
+import BgButton from "./interaction/BgButton";
 
 export default ArticleItem = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const navigation = useNavigation();
 
   const deleteArticleHandler = () => {
-    let listedArticles = props.articles;
+    const listedArticles = props.articles;
     const toDeleteArticle = listedArticles.find((item) => item.id === props.id);
-    let toDeleteArticleIndex = listedArticles.indexOf(toDeleteArticle);
+    const toDeleteArticleIndex = listedArticles.indexOf(toDeleteArticle);
+    const newScores = articleData.scores;
+    const [returnScore, returnAverage, returnArticles] = deleteArticle(listedArticles, toDeleteArticle, toDeleteArticleIndex, newScores);
 
     if ("quantity" in toDeleteArticle) {
-      let newScores = articleData.scores;
-      newScores = newScores - toDeleteArticle.score * listedArticles[toDeleteArticleIndex].quantity;
-
-      let totalItems = 0;
-      for (let i = 0; i < listedArticles.length; i++) {
-        totalItems = totalItems + listedArticles[i]["quantity"];
-      }
-
-      const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
-
-      listedArticles.splice(toDeleteArticleIndex, 1);
-
       setArticleData((articleData) => ({
         articles: articleData.articles,
         boughtArticles: listedArticles,
-        scores: newScores,
-        average: newAverage,
+        scores: returnScore,
+        average: returnAverage,
         favArticles: articleData.favArticles,
       }));
     } else {
-      listedArticles.splice(toDeleteArticleIndex, 1);
-
       setArticleData((articleData) => ({
         articles: articleData.articles,
         boughtArticles: articleData.boughtArticles,
         scores: articleData.scores,
         average: articleData.average,
-        favArticles: listedArticles,
+        favArticles: returnArticles,
       }));
     }
-    storeData(articleData);
   };
-
+  storeData(articleData);
   return (
     <TouchableOpacity
       style={styles.listItemBox}
@@ -65,13 +54,7 @@ export default ArticleItem = (props) => {
       <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
       <Text>{props.title}</Text>
       <Text>{props.quantity}</Text>
-      <Button
-        title="X"
-        color= "#6A8CAF"
-        onPress={() => {
-          deleteArticleHandler();
-        }}
-      />
+      <BgButton text="X" onClick={() => deleteArticleHandler()} />
     </TouchableOpacity>
   );
 };

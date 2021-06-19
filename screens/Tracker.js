@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import ArticleList from "../components/ArticleList";
 import Chart from "../components/Chart";
+import BgButton from "../components/interaction/BgButton";
 import { ArticleContext } from "../data/ArticleContext";
 
 export default Tracker = (props) => {
@@ -9,29 +10,12 @@ export default Tracker = (props) => {
   const [period, setPeriod] = useState("total");
 
   return (
-    <View style={[styles.boxes]}>
-      <View style={{flexDirection: "row", justifyContent: "center", marginTop: 30, marginBottom: 30 }}>
-        <Button 
-        title="day" 
-        color="#6A8CAF"
-        
-        onPress={() => setPeriod("day")} />
-        <View style={styles.space} />
-        <Button
-        title="month"
-        color="#6A8CAF"
-        onPress={() => setPeriod("month")} />
-        <View style={styles.space} />
-
-        <Button 
-        title="year" 
-        color="#6A8CAF"
-        onPress={() => setPeriod("year")} />
-        <View style={styles.space} />
-        <Button 
-        title="total"
-        color="#6A8CAF"
-        onPress={() => setPeriod("total")} />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginTop: 20 }}>
+        <BgButton text="day" onClick={() => setPeriod("day")} />
+        <BgButton text="month" onClick={() => setPeriod("month")} />
+        <BgButton text="year" onClick={() => setPeriod("year")} />
+        <BgButton text="total" onClick={() => setPeriod("total")} />
       </View>
       <Text style = {styles.text}>Personal Consumption Chart</Text>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
@@ -40,6 +24,7 @@ export default Tracker = (props) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
 

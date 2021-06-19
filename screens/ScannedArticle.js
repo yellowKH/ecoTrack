@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
+import BgButton from "../components/interaction/BgButton";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
-import BoughtItem from "../models/boughtItem";
 import { storeData } from "../data/AppStorage";
+import { updateBoughtArticles, updateFavArticles } from "../controller/ArticleController";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
@@ -15,47 +16,59 @@ export default ScannedArticle = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
   const [quantity, setQuantity] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
-  const newBoughtArticles = articleData.boughtArticles;
 
-  const updateBoughtArticles = () => {
-    let totalQuantity = quantity;
-    if (foundArticle) {
-      const toUpdateArticle = newBoughtArticles.indexOf(foundArticle);
-      newBoughtArticles.splice(toUpdateArticle, 1);
-      totalQuantity = quantity + foundArticle.quantity;
-    }
-    newBoughtArticles.push(
-      new BoughtItem(
-        scannedArticle.id,
-        scannedArticle.title,
-        scannedArticle.description,
-        scannedArticle.imgSrc,
-        scannedArticle.score,
-        totalQuantity,
-        new Date()
-      )
+  const updateBoughtArticlesHandler = () => {
+    const newBoughtArticles = articleData.boughtArticles;
+    const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
+    const newScores = articleData.scores;
+    const totalQuantity = quantity;
+
+    const [returnScore, returnAverage, returnBoughtArticles] = updateBoughtArticles(
+      scannedArticle,
+      quantity,
+      newScores,
+      totalQuantity,
+      foundArticle,
+      newBoughtArticles
     );
-
-    let newScores = articleData.scores;
-    newScores = newScores + scannedArticle.score * quantity;
-
-    let totalItems = 0;
-    for (let i = 0; i < newBoughtArticles.length; i++) {
-      totalItems = totalItems + newBoughtArticles[i].quantity;
-    }
-
-    const newAverage = totalItems === 0 ? 0 : (newScores / totalItems).toFixed(2);
 
     setArticleData((articleData) => ({
       articles: articleData.articles,
-      boughtArticles: newBoughtArticles,
-      scores: newScores,
-      average: newAverage,
+      boughtArticles: returnBoughtArticles,
+      scores: returnScore,
+      average: returnAverage,
       favArticles: articleData.favArticles,
     }));
-    storeData(articleData);
+
     setIsOpen(true);
+  };
+  storeData(articleData);
+
+  const updateFavArticlesHandler = () => {
+    const newFavArticles = articleData.favArticles;
+    const foundFav = articleData.favArticles.find((item) => item.id === scannedArticle.id);
+    const returnArticles = updateFavArticles(
+      foundFav,
+      newFavArticles,
+      scannedArticle.id,
+      scannedArticle.title,
+      scannedArticle.description,
+      scannedArticle.imgSrc,
+      scannedArticle.score
+    );
+
+    setArticleData((articleData) => ({
+      articles: articleData.articles,
+      boughtArticles: articleData.boughtArticles,
+      scores: articleData.scores,
+      average: articleData.average,
+      favArticles: returnArticles,
+    }));
+
+    storeData(articleData);
+
+    const alertText = !foundFav ? "Article added!" : "Article unfavorized!";
+    Alert.alert(alertText);
   };
 
   const cancelScanHandler = () => {
@@ -73,45 +86,44 @@ export default ScannedArticle = (props) => {
     <View style={[styles.boxes]}>
       <Text>{scannedArticle.title}</Text>
       <View style={{ flexDirection: "row" }}>
-        <Button
-          title="Cancel"
-          color="#6A8CAF"
-          onPress={() => {
+        <BgButton
+          text="Cancel"
+          onClick={() => {
             navigation.goBack();
             navigation.navigate("Tracker");
           }}
         />
-         <View style={styles.space} />
-        <Button
-          title="Buy"
-          color="#6A8CAF"
-          onPress={() => {
-            updateBoughtArticles();
+        <BgButton
+          text="Buy"
+          onClick={() => {
+            updateBoughtArticlesHandler();
           }}
         />
-         <View style={styles.space} />
-        <Button
-          title="Rescan"
-          color="#6A8CAF"
-          onPress={() => {
+        <BgButton
+          text="Rescan"
+          onClick={() => {
             navigation.goBack();
           }}
         />
+        <BgButton
+          text="Fav"
+          onClick={() => {
+            updateFavArticlesHandler();
+          }}
+        />
       </View>
-      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "30%", alignItems: "center" }}>
-        <Button
-          title="-"
-          color="#6A8CAF"
-          onPress={() => {
+      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "50%", alignItems: "center" }}>
+        <BgButton
+          text="-"
+          onClick={() => {
             if (quantity != 1) setQuantity(quantity - 1);
           }}
         />
         <View style={styles.space} />
         <Text>{quantity}</Text>
-        <Button
-          title="+"
-          color="#6A8CAF"
-          onPress={() => {
+        <BgButton
+          text="+"
+          onClick={() => {
             setQuantity(quantity + 1);
           }}
         />
