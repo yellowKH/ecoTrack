@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, View, Text, Button, Alert } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
 import ArticleDescription from "../components/ArticleDescription";
@@ -36,12 +36,7 @@ export default ArticleInfo = (props) => {
       <Text>
         {title} {quantity}x
       </Text>
-      <Button
-        title="ADD FAV"
-        onPress={() => {
-          updateFavArticlesHandler();
-        }}
-      />
+      <BgButton text="ADD FAV" onClick={() => updateFavArticlesHandler()} />
       <ArticleImage imgSrc={imgSrc} width={240} height={240} />
       <ArticleDescription description={description} />
       <Speedometer value={score} />

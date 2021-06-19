@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
+import BgButton from "../components/interaction/BgButton";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
 import { storeData } from "../data/AppStorage";
@@ -58,37 +59,37 @@ export default ScannedArticle = (props) => {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "space-around" }}>
       <Text>{scannedArticle.title}</Text>
       <View style={{ flexDirection: "row" }}>
-        <Button
-          title="Cancel"
-          onPress={() => {
+        <BgButton
+          text="Cancel"
+          onClick={() => {
             navigation.goBack();
             navigation.navigate("Tracker");
           }}
         />
-        <Button
-          title="Buy"
-          onPress={() => {
+        <BgButton
+          text="Buy"
+          onClick={() => {
             updateBoughtArticlesHandler();
           }}
         />
-        <Button
-          title="Rescan"
-          onPress={() => {
+        <BgButton
+          text="Rescan"
+          onClick={() => {
             navigation.goBack();
           }}
         />
       </View>
-      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "30%", alignItems: "center" }}>
-        <Button
-          title="-"
-          onPress={() => {
+      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "50%", alignItems: "center" }}>
+        <BgButton
+          text="-"
+          onClick={() => {
             if (quantity != 1) setQuantity(quantity - 1);
           }}
         />
         <Text>{quantity}</Text>
-        <Button
-          title="+"
-          onPress={() => {
+        <BgButton
+          text="+"
+          onClick={() => {
             setQuantity(quantity + 1);
           }}
         />

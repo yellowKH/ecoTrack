@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import ArticleList from "../components/ArticleList";
 import Chart from "../components/Chart";
+import BgButton from "../components/interaction/BgButton";
 import { ArticleContext } from "../data/ArticleContext";
 
 export default Tracker = (props) => {
@@ -10,11 +11,11 @@ export default Tracker = (props) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
-        <Button title="day" onPress={() => setPeriod("day")} />
-        <Button title="month" onPress={() => setPeriod("month")} />
-        <Button title="year" onPress={() => setPeriod("year")} />
-        <Button title="total" onPress={() => setPeriod("total")} />
+      <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginTop: 20 }}>
+        <BgButton text="day" onClick={() => setPeriod("day")} />
+        <BgButton text="month" onClick={() => setPeriod("month")} />
+        <BgButton text="year" onClick={() => setPeriod("year")} />
+        <BgButton text="total" onClick={() => setPeriod("total")} />
       </View>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
       <Text>Your average CO2 Score: {articleData.average}</Text>

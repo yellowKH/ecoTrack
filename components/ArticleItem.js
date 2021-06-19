@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, Button } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ArticleImage from "./ArticleImage";
 import { ArticleContext } from "../data/ArticleContext";
 import { storeData } from "../data/AppStorage";
 import { deleteArticle } from "../controller/ArticleController";
+import BgButton from "./interaction/BgButton";
 
 export default ArticleItem = (props) => {
   const [articleData, setArticleData] = useContext(ArticleContext);
@@ -53,12 +54,7 @@ export default ArticleItem = (props) => {
       <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
       <Text>{props.title}</Text>
       <Text>{props.quantity}</Text>
-      <Button
-        title="X"
-        onPress={() => {
-          deleteArticleHandler();
-        }}
-      />
+      <BgButton text="X" onClick={() => deleteArticleHandler()} />
     </TouchableOpacity>
   );
 };

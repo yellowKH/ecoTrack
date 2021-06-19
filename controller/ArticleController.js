@@ -42,7 +42,7 @@ function updateFavArticles(foundFav, newFavArticles, id, title, description, img
   let listedArticles;
 
   if (!foundFav) {
-    newFavArticles.push(new FavorizedItem(id, title, description, imgSrc, score, new Date().toDateString()));
+    newFavArticles.push(new FavorizedItem(id, title, description, imgSrc, score, new Date()));
     listedArticles = newFavArticles;
   } else {
     listedArticles = newFavArticles;
