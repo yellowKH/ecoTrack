@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
@@ -6,15 +6,18 @@ import ArticleDescription from "../components/ArticleDescription";
 import Speedometer from "../components/Speedometer";
 import { storeData } from "../data/AppStorage";
 import { updateFavArticles } from "../controller/ArticleController";
+import { Icon } from "react-native-elements";
 
 export default ArticleInfo = (props) => {
   const route = useRoute();
   const { id, title, description, score, quantity, imgSrc } = route.params;
   const [articleData, setArticleData] = useContext(ArticleContext);
+  const foundFav = articleData.favArticles.find((item) => item.id === id);
+  const [icon, setIcon] = useState(foundFav ? "heart" : "heart-o");
 
   const updateFavArticlesHandler = () => {
     const newFavArticles = articleData.favArticles;
-    const foundFav = articleData.favArticles.find((item) => item.id === id);
+
     const returnArticles = updateFavArticles(foundFav, newFavArticles, id, title, description, imgSrc, score);
 
     setArticleData((articleData) => ({
@@ -28,6 +31,7 @@ export default ArticleInfo = (props) => {
     storeData(articleData);
 
     const alertText = !foundFav ? "Article added!" : "Article unfavorized!";
+    foundFav ? setIcon("heart-o") : setIcon("heart");
     Alert.alert(alertText);
   };
 
@@ -36,7 +40,7 @@ export default ArticleInfo = (props) => {
       <Text style={styles.text}>
         {title} {quantity}x
       </Text>
-      <BgButton text="ADD FAV" onClick={() => updateFavArticlesHandler()} />
+      <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
       <ArticleImage imgSrc={imgSrc} width={240} height={240} />
       <ArticleDescription description={description} />
       <Speedometer value={score} />
