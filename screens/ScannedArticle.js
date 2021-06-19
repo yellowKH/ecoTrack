@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
@@ -7,7 +7,7 @@ import BgButton from "../components/interaction/BgButton";
 import ArticleDescription from "../components/ArticleDescription";
 import { ArticleContext } from "../data/ArticleContext";
 import { storeData } from "../data/AppStorage";
-import { updateBoughtArticles } from "../controller/ArticleController";
+import { updateBoughtArticles, updateFavArticles } from "../controller/ArticleController";
 
 export default ScannedArticle = (props) => {
   const navigation = useNavigation();
@@ -18,8 +18,8 @@ export default ScannedArticle = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const updateBoughtArticlesHandler = () => {
-    const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
     const newBoughtArticles = articleData.boughtArticles;
+    const foundArticle = articleData.boughtArticles.find((item) => item.id === scannedArticle.id);
     const newScores = articleData.scores;
     const totalQuantity = quantity;
 
@@ -43,6 +43,33 @@ export default ScannedArticle = (props) => {
     setIsOpen(true);
   };
   storeData(articleData);
+
+  const updateFavArticlesHandler = () => {
+    const newFavArticles = articleData.favArticles;
+    const foundFav = articleData.favArticles.find((item) => item.id === scannedArticle.id);
+    const returnArticles = updateFavArticles(
+      foundFav,
+      newFavArticles,
+      scannedArticle.id,
+      scannedArticle.title,
+      scannedArticle.description,
+      scannedArticle.imgSrc,
+      scannedArticle.score
+    );
+
+    setArticleData((articleData) => ({
+      articles: articleData.articles,
+      boughtArticles: articleData.boughtArticles,
+      scores: articleData.scores,
+      average: articleData.average,
+      favArticles: returnArticles,
+    }));
+
+    storeData(articleData);
+
+    const alertText = !foundFav ? "Article added!" : "Article unfavorized!";
+    Alert.alert(alertText);
+  };
 
   const cancelScanHandler = () => {
     setIsOpen(false);
@@ -76,6 +103,12 @@ export default ScannedArticle = (props) => {
           text="Rescan"
           onClick={() => {
             navigation.goBack();
+          }}
+        />
+        <BgButton
+          text="Fav"
+          onClick={() => {
+            updateFavArticlesHandler();
           }}
         />
       </View>
