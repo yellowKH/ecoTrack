@@ -60,8 +60,10 @@ export default Chart = (props) => {
         height={220}
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundColor: "#158915",
-          backgroundGradientFrom: "#A8A8A8",
+          //backgroundColor: "#158915",
+          //backgroundGradientFrom: "#A8A8A8",
+          backgroundColor: "#246EE9",
+          backgroundGradientFrom: "#3083dc",
           backgroundGradientTo: "#DCDCDC",
           decimalPlaces: 2, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,

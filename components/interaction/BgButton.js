@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "#76c6c5",
   },
   buttonText: {
-    color: "blue",
+    color: "#EBFFF5",
     fontSize: 15,
   },
 });

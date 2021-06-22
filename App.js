@@ -51,9 +51,9 @@ function TrackerStackScreen() {
       <TrackerStack.Screen name="Tracker" component={TrackerScreen}
       options= {{
         headerStyle: {
-          backgroundColor: '#EEF9BF',
+          backgroundColor: '#3eb489',
         },
-        headerTintColor: '#000000',
+        headerTintColor: '#fff',
         headerTitleStyle: {
          // fontWeight: 'bold',
          alignSelf: 'center',
@@ -64,9 +64,9 @@ function TrackerStackScreen() {
       <TrackerStack.Screen name="Article Info" component={ArticleInfoScreen}
       options= {{
         headerStyle: {
-          backgroundColor: '#EEF9BF',
+          backgroundColor: '#F92448',
         },
-        headerTintColor: '#000000',
+        headerTintColor: '#fff',
         headerTitleStyle: {
          // fontWeight: 'bold',
          alignSelf: 'center',
@@ -84,9 +84,9 @@ function ScannerStackScreen() {
       <ScannerStack.Screen name="Scanner" component={ScannerScreen}
       options= {{
         headerStyle: {
-          backgroundColor: '#EEF9BF',
+          backgroundColor: '#3eb489',
         },
-        headerTintColor: '#000000',
+        headerTintColor: '#fff',
         headerTitleStyle: {
          // fontWeight: 'bold',
          alignSelf: 'center',
@@ -97,9 +97,9 @@ function ScannerStackScreen() {
       <ScannerStack.Screen name="Scanned Article" component={ScannedArticleScreen}
       options= {{
         headerStyle: {
-          backgroundColor: '#EEF9BF',
+          backgroundColor: '#F92448',
         },
-        headerTintColor: '#000000',
+        headerTintColor: '#fff',
         headerTitleStyle: {
          // fontWeight: 'bold',
          alignSelf: 'center',
@@ -114,12 +114,12 @@ function ScannerStackScreen() {
 function FavoritesStackScreen() {
   return (
     <FavoritesStack.Navigator>
-      <FavoritesStack.Screen name="Fav Article List" component={FavListScreen}
+      <FavoritesStack.Screen name="Favorites" component={FavListScreen}
       options= {{
         headerStyle: {
-          backgroundColor: '#EEF9BF',
+          backgroundColor: '#3eb489',
         },
-        headerTintColor: '#000000',
+        headerTintColor: '#fff',
         headerTitleStyle: {
          // fontWeight: 'bold',
          alignSelf: 'center',
@@ -151,14 +151,15 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator tabBarOptions = {
-      {style:{backgroundColor: '#FFFFC7'}}
+      {style:{backgroundColor: '#7fffd4'}}
       }
       
       screenOptions={({route}) => ({
         tabBarIcon: ({color}) => screenOptions(route, color),
+  
       })}>
 
-      <Tab.Screen name="Tracker" component={TrackerStackScreen} />
+      <Tab.Screen name="Tracker" component={TrackerStackScreen}/>
       <Tab.Screen name="Scanner" component={ScannerStackScreen} />
       <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
     </Tab.Navigator>

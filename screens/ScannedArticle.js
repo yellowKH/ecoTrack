@@ -96,12 +96,14 @@ export default ScannedArticle = (props) => {
             navigation.navigate("Tracker");
           }}
         />
+         <View style={styles.space} />
         <BgButton
           text="Buy"
           onClick={() => {
             updateBoughtArticlesHandler();
           }}
         />
+         <View style={styles.space} />
         <BgButton
           text="Rescan"
           onClick={() => {
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: "center", 
     justifyContent: "space-around",
-    backgroundColor: "#75B79E"
+    backgroundColor: "#FFDA0A"
  },
 
 

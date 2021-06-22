@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
-    backgroundColor: "#75B79E"
+    backgroundColor: "#FFDA0A"
 
   },
   //Falls man Titel und Beschreibung in getrennte Flexboxen haben möchte 
