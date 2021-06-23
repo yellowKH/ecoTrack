@@ -86,7 +86,7 @@ export default ScannedArticle = (props) => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "space-around" }}>
+    <View style={[styles.boxes]}>
       <Text>{scannedArticle.title}</Text>
       <View style={{ flexDirection: "row" }}>
         <BgButton
@@ -96,12 +96,14 @@ export default ScannedArticle = (props) => {
             navigation.navigate("Tracker");
           }}
         />
+         <View style={styles.space} />
         <BgButton
           text="Buy"
           onClick={() => {
             updateBoughtArticlesHandler();
           }}
         />
+         <View style={styles.space} />
         <BgButton
           text="Rescan"
           onClick={() => {
@@ -117,6 +119,7 @@ export default ScannedArticle = (props) => {
             if (quantity != 1) setQuantity(quantity - 1);
           }}
         />
+        <View style={styles.space} />
         <Text>{quantity}</Text>
         <BgButton
           text="+"
@@ -134,4 +137,19 @@ export default ScannedArticle = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  space: {
+    width:20,
+    height:20
+  },
+
+  boxes: {
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "space-around",
+    backgroundColor: "#FFDA0A"
+ },
+
+
+});

@@ -36,8 +36,8 @@ export default ArticleInfo = (props) => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "space-evenly" }}>
-      <Text>
+    <View style={[styles.boxes, styles.box1]}>
+      <Text style={styles.text}>
         {title} {quantity}x
       </Text>
       <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
@@ -48,4 +48,30 @@ export default ArticleInfo = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  
+  //Fonts wird hier hinzugefügt
+  text: {
+  
+  },
+
+  //Farbe vom Button ist in der View
+  button: {
+  },
+
+  boxes: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    backgroundColor: "#FFDA0A"
+
+  },
+  //Falls man Titel und Beschreibung in getrennte Flexboxen haben möchte 
+  box1: {
+
+  }
+
+
+
+});
