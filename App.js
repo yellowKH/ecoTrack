@@ -51,15 +51,6 @@ function TrackerStackScreen() {
         component={TrackerScreen}
         options={{
           headerShown: false,
-          headerStyle: {
-            backgroundColor: "#3eb489",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            alignSelf: "center",
-            marginTop: 10,
-            marginBottom: 10,
-          },
         }}
       />
       <TrackerStack.Screen
@@ -74,6 +65,7 @@ function TrackerStackScreen() {
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Bought Article",
         }}
@@ -104,6 +96,7 @@ function ScannerStackScreen() {
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Scanned Article",
         }}
@@ -131,10 +124,10 @@ function FavoritesStackScreen() {
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
-            // fontWeight: 'bold',
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Favorized Article",
         }}
