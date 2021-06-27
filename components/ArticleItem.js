@@ -54,7 +54,12 @@ export default ArticleItem = (props) => {
       <ArticleImage imgSrc={props.imgSrc} width={40} height={40} />
       <Text>{props.title}</Text>
       <Text>{props.quantity}</Text>
-      <BgButton text="X" onClick={() => deleteArticleHandler()} />
+      <BgButton
+        text="X"
+        buttonStyle={{ backgroundColor: "transparent", width: 40, height: 40 }}
+        buttonTextStyle={{ color: "red", fontSize: 20 }}
+        onClick={() => deleteArticleHandler()}
+      />
     </TouchableOpacity>
   );
 };

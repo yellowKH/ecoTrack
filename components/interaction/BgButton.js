@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default BgButton = (props) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer} onPress={() => props.onClick()}>
-      <Text style={styles.buttonText}>{props.text}</Text>
+    <TouchableOpacity style={[styles.buttonContainer, props.buttonStyle]} onPress={() => props.onClick()}>
+      <Text style={[styles.buttonText, props.buttonTextStyle]}>{props.text}</Text>
     </TouchableOpacity>
   );
 };
