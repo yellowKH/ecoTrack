@@ -18,7 +18,7 @@ export default Tracker = (props) => {
         <BgButton text="total" onClick={() => setPeriod("total")} />
       </View>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
-      <Text style={styles.scoreText}>Your average CO2 Score: {articleData.average}</Text>
+      <Text style={styles.scoreText}>Average CO2 Score: {articleData.average}</Text>
       <ArticleList target={"Article Info"} articles={articleData.boughtArticles} />
     </View>
   );
@@ -41,5 +41,6 @@ const styles = StyleSheet.create({
 
   scoreText: {
     marginTop: 10,
+    fontSize: 20,
   },
 });
