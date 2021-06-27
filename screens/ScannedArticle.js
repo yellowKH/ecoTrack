@@ -88,7 +88,10 @@ export default ScannedArticle = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.upperWrapper}>
-        <Text>{scannedArticle.title}</Text>
+        <View style={styles.articleName}>
+          <Text>{scannedArticle.title}</Text>
+          <Icon name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
+        </View>
         <View style={styles.interactionRow}>
           <BgButton
             text="Cancel"
@@ -110,7 +113,6 @@ export default ScannedArticle = (props) => {
             }}
           />
         </View>
-        <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
         <View style={styles.quantitySelection}>
           <BgButton
             text="-"
@@ -129,11 +131,9 @@ export default ScannedArticle = (props) => {
         <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
         <ArticleDescription description={scannedArticle.description} />
       </View>
-
       <View style={styles.lowerWrapper}>
         <Speedometer style={styles.speedometer} value={scannedArticle.score} />
       </View>
-
       <AfterScan visible={modalIsOpen} onCancelScan={cancelScanHandler} onContinueScan={continueScanHandler} />
     </View>
   );
@@ -142,7 +142,6 @@ export default ScannedArticle = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     backgroundColor: "#FFFFFF",
   },
 
@@ -150,6 +149,7 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: "center",
     justifyContent: "space-between",
+    marginTop: 20,
   },
 
   interactionRow: {
@@ -166,7 +166,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  lowerWrapper: { position: "relative", flex: 1, marginTop: 100 },
+  articleName: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: "60%",
+  },
+
+  lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },
 
   speedometer: {
     position: "absolute",
