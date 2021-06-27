@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
+import { COLORS } from "../constants/color.js";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { useNavigation } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#A7E9AF",
+    backgroundColor: COLORS.main,
     marginTop: 30,
   },
 });

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { COLORS } from "../constants/color.js";
 import ArticleList from "../components/ArticleList";
 import Chart from "../components/Chart";
 import BgButton from "../components/interaction/BgButton";
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#aaf0d1",
+    backgroundColor: COLORS.main,
   },
 
   periodSelection: {

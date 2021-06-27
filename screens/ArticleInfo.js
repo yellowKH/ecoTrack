@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
+import { COLORS } from "../constants/color.js";
 import { useRoute } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
 import ArticleDescription from "../components/ArticleDescription";
@@ -55,7 +56,7 @@ export default ArticleInfo = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.info,
   },
 
   upperWrapper: {

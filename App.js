@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { COLORS } from "./constants/color.js";
 
 import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
@@ -58,7 +59,7 @@ function TrackerStackScreen() {
         component={ArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
@@ -89,7 +90,7 @@ function ScannerStackScreen() {
         component={ScannedArticleScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
@@ -120,7 +121,7 @@ function FavoritesStackScreen() {
         component={FavArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
@@ -141,7 +142,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      tabBarOptions={{ style: { backgroundColor: "#7fffd4" } }}
+      tabBarOptions={{ style: { backgroundColor: COLORS.tab } }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => screenOptions(route, color),
       })}

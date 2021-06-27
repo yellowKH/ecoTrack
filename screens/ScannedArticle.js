@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { COLORS } from "../constants/color.js";
 import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
 import BgButton from "../components/interaction/BgButton";
@@ -146,7 +147,7 @@ export default ScannedArticle = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.info,
   },
 
   upperWrapper: {
