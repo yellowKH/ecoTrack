@@ -40,7 +40,7 @@ export default ArticleInfo = (props) => {
       <View style={styles.upperWrapper}>
         <View style={styles.articleName}>
           <Text>{title}</Text>
-          <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
+          <Icon name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
         </View>
         <ArticleImage imgSrc={imgSrc} width={240} height={240} />
         <ArticleDescription description={description} />
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   articleName: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    width: "60%",
   },
 
   lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },

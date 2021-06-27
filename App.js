@@ -75,6 +75,7 @@ function TrackerStackScreen() {
             marginTop: 10,
             marginBottom: 10,
           },
+          title: "Bought Article",
         }}
       />
     </TrackerStack.Navigator>
@@ -95,7 +96,16 @@ function ScannerStackScreen() {
         name="Scanned Article"
         component={ScannedArticleScreen}
         options={{
-          headerShown: false,
+          headerStyle: {
+            backgroundColor: "#7fffd4",
+          },
+          headerTintColor: "#000000",
+          headerTitleStyle: {
+            alignSelf: "center",
+            marginTop: 10,
+            marginBottom: 10,
+          },
+          title: "Scanned Article",
         }}
       />
     </ScannerStack.Navigator>
@@ -126,6 +136,7 @@ function FavoritesStackScreen() {
             marginTop: 10,
             marginBottom: 10,
           },
+          title: "Favorized Article",
         }}
       />
     </FavoritesStack.Navigator>
