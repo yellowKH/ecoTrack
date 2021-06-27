@@ -10,54 +10,36 @@ export default Tracker = (props) => {
   const [period, setPeriod] = useState("total");
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#aaf0d1"}}>
-      <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginTop: 20 }}>
+    <View style={styles.container}>
+      <View style={styles.periodSelection}>
         <BgButton text="day" onClick={() => setPeriod("day")} />
-        <View style={styles.space} />
         <BgButton text="month" onClick={() => setPeriod("month")} />
-        <View style={styles.space} />
         <BgButton text="year" onClick={() => setPeriod("year")} />
-        <View style={styles.space} />
         <BgButton text="total" onClick={() => setPeriod("total")} />
       </View>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
-      <Text style={styles.text1}>Your average CO2 Score: {articleData.average}</Text>
+      <Text style={styles.scoreText}>Your average CO2 Score: {articleData.average}</Text>
       <ArticleList target={"Article Info"} articles={articleData.boughtArticles} />
     </View>
   );
 };
 
-
 const styles = StyleSheet.create({
-
-  space: {
-    width:18,
-    height:18
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#aaf0d1",
   },
 
-  boxes: {
-     flex: 1, 
-     alignItems: "center", 
-     justifyContent: "center" ,
-     backgroundColor: "#A7E9AF"
+  periodSelection: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: "100%",
+    marginTop: 50,
   },
 
-
-  text: {
-    fontSize: 22,
-    fontStyle: 'normal',
-    
+  scoreText: {
+    marginTop: 10,
   },
-
-  text1: {
-    color: "#214540",
-  }
-
-
-
-
-
-
-
 });
-

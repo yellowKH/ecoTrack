@@ -96,14 +96,14 @@ export default ScannedArticle = (props) => {
             navigation.navigate("Tracker");
           }}
         />
-         <View style={styles.space} />
+        <View style={styles.space} />
         <BgButton
           text="Buy"
           onClick={() => {
             updateBoughtArticlesHandler();
           }}
         />
-         <View style={styles.space} />
+        <View style={styles.space} />
         <BgButton
           text="Rescan"
           onClick={() => {
@@ -112,14 +112,13 @@ export default ScannedArticle = (props) => {
         />
       </View>
       <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
-      <View style={{ flexDirection: "row", justifyContent: "space-around", width: "50%", alignItems: "center" }}>
+      <View style={styles.interactionRow}>
         <BgButton
           text="-"
           onClick={() => {
             if (quantity != 1) setQuantity(quantity - 1);
           }}
         />
-        <View style={styles.space} />
         <Text>{quantity}</Text>
         <BgButton
           text="+"
@@ -138,18 +137,17 @@ export default ScannedArticle = (props) => {
 };
 
 const styles = StyleSheet.create({
-
-  space: {
-    width:20,
-    height:20
+  interactionRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "50%",
+    alignItems: "center",
   },
 
   boxes: {
-    flex: 1, 
-    alignItems: "center", 
+    flex: 1,
+    alignItems: "center",
     justifyContent: "space-around",
-    backgroundColor: "#FFDA0A"
- },
-
-
+    backgroundColor: "#FFDA0A",
+  },
 });
