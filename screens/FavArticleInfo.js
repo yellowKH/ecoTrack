@@ -10,14 +10,34 @@ export default FavArticleInfo = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>{title}</Text>
-      <ArticleImage imgSrc={imgSrc} width={240} height={240} />
-      <ArticleDescription description={description} />
-      <Speedometer value={score} />
+      <View style={styles.upperWrapper}>
+        <Text>{title}</Text>
+        <ArticleImage imgSrc={imgSrc} width={240} height={240} />
+        <ArticleDescription description={description} />
+      </View>
+      <View style={styles.lowerWrapper}>
+        <Speedometer style={styles.speedometer} value={score} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "space-evenly", backgroundColor: "#A7E9AF" },
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
+
+  upperWrapper: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+
+  lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },
+
+  speedometer: {
+    position: "absolute",
+    bottom: 0,
+  },
 });
