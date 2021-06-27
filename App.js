@@ -67,9 +67,9 @@ function TrackerStackScreen() {
         component={ArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#F92448",
+            backgroundColor: "#7fffd4",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "#000000",
           headerTitleStyle: {
             alignSelf: "center",
             marginTop: 10,
@@ -88,30 +88,14 @@ function ScannerStackScreen() {
         name="Scanner"
         component={ScannerScreen}
         options={{
-          headerStyle: {
-            backgroundColor: "#3eb489",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            alignSelf: "center",
-            marginTop: 10,
-            marginBottom: 10,
-          },
+          headerShown: false,
         }}
       />
       <ScannerStack.Screen
         name="Scanned Article"
         component={ScannedArticleScreen}
         options={{
-          headerStyle: {
-            backgroundColor: "#F92448",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            alignSelf: "center",
-            marginTop: 10,
-            marginBottom: 10,
-          },
+          headerShown: false,
         }}
       />
     </ScannerStack.Navigator>
@@ -126,15 +110,6 @@ function FavoritesStackScreen() {
         component={FavListScreen}
         options={{
           headerShown: false,
-          headerStyle: {
-            backgroundColor: "#3eb489",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            alignSelf: "center",
-            marginTop: 10,
-            marginBottom: 10,
-          },
         }}
       />
       <FavoritesStack.Screen
@@ -142,7 +117,7 @@ function FavoritesStackScreen() {
         component={FavArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#EEF9BF",
+            backgroundColor: "#7fffd4",
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
@@ -159,7 +134,6 @@ function FavoritesStackScreen() {
 
 const Tab = createBottomTabNavigator();
 
-//Wohin <FontAwesome name ='line-chart' size={24} color="black"> </FontAwesome>
 function MyTabs() {
   return (
     <Tab.Navigator
@@ -193,7 +167,7 @@ const screenOptions = (route, color) => {
       break;
   }
 
-  return <Icon name={iconName} color={color} size={24} />;
+  return <Icon name={iconName} color={color} size={30} />;
 };
 
 export default (App) => {

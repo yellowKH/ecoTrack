@@ -39,7 +39,7 @@ export default ArticleItem = (props) => {
   storeData(articleData);
   return (
     <TouchableOpacity
-      style={styles.listItemBox}
+      style={styles.listItem}
       onPress={() => {
         navigation.navigate(props.target, {
           id: props.id,
@@ -60,7 +60,7 @@ export default ArticleItem = (props) => {
 };
 
 const styles = StyleSheet.create({
-  listItemBox: {
+  listItem: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -74,10 +74,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 8,
     backgroundColor: "#83c5be",
-    //backgroundColor: "#76c6c5",
-    // shadowColor: 'black',
-    // shadowOpacity: 0.26,
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowRadius: 10
   },
 });

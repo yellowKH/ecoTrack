@@ -86,68 +86,90 @@ export default ScannedArticle = (props) => {
   };
 
   return (
-    <View style={[styles.boxes]}>
-      <Text>{scannedArticle.title}</Text>
-      <View style={{ flexDirection: "row" }}>
-        <BgButton
-          text="Cancel"
-          onClick={() => {
-            navigation.goBack();
-            navigation.navigate("Tracker");
-          }}
-        />
-        <View style={styles.space} />
-        <BgButton
-          text="Buy"
-          onClick={() => {
-            updateBoughtArticlesHandler();
-          }}
-        />
-        <View style={styles.space} />
-        <BgButton
-          text="Rescan"
-          onClick={() => {
-            navigation.goBack();
-          }}
-        />
-      </View>
-      <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
-      <View style={styles.interactionRow}>
-        <BgButton
-          text="-"
-          onClick={() => {
-            if (quantity != 1) setQuantity(quantity - 1);
-          }}
-        />
-        <Text>{quantity}</Text>
-        <BgButton
-          text="+"
-          onClick={() => {
-            setQuantity(quantity + 1);
-          }}
-        />
+    <View style={styles.container}>
+      <View style={styles.upperWrapper}>
+        <Text>{scannedArticle.title}</Text>
+        <View style={styles.interactionRow}>
+          <BgButton
+            text="Cancel"
+            onClick={() => {
+              navigation.goBack();
+              navigation.navigate("Tracker");
+            }}
+          />
+          <BgButton
+            text="Buy"
+            onClick={() => {
+              updateBoughtArticlesHandler();
+            }}
+          />
+          <BgButton
+            text="Rescan"
+            onClick={() => {
+              navigation.goBack();
+            }}
+          />
+        </View>
+        <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
+        <View style={styles.quantitySelection}>
+          <BgButton
+            text="-"
+            onClick={() => {
+              if (quantity != 1) setQuantity(quantity - 1);
+            }}
+          />
+          <Text>{quantity}</Text>
+          <BgButton
+            text="+"
+            onClick={() => {
+              setQuantity(quantity + 1);
+            }}
+          />
+        </View>
+        <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
+        <ArticleDescription description={scannedArticle.description} />
       </View>
 
-      <ArticleImage imgSrc={scannedArticle.imgSrc} width={200} height={200} />
-      <ArticleDescription description={scannedArticle.description} />
-      <Speedometer value={scannedArticle.score} />
+      <View style={styles.lowerWrapper}>
+        <Speedometer style={styles.speedometer} value={scannedArticle.score} />
+      </View>
+
       <AfterScan visible={modalIsOpen} onCancelScan={cancelScanHandler} onContinueScan={continueScanHandler} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+  },
+
+  upperWrapper: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
   interactionRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "80%",
+    alignItems: "center",
+  },
+
+  quantitySelection: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "50%",
     alignItems: "center",
   },
 
-  boxes: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-around",
-    backgroundColor: "#FFDA0A",
+  lowerWrapper: { position: "relative", flex: 1, marginTop: 100 },
+
+  speedometer: {
+    position: "absolute",
+    bottom: 0,
   },
 });

@@ -36,42 +36,44 @@ export default ArticleInfo = (props) => {
   };
 
   return (
-    <View style={[styles.boxes, styles.box1]}>
-      <Text style={styles.text}>
-        {title} {quantity}x
-      </Text>
-      <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
-      <ArticleImage imgSrc={imgSrc} width={240} height={240} />
-      <ArticleDescription description={description} />
-      <Speedometer value={score} />
+    <View style={styles.container}>
+      <View style={styles.upperWrapper}>
+        <View style={styles.articleName}>
+          <Text>{title}</Text>
+          <Icon raised name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
+        </View>
+        <ArticleImage imgSrc={imgSrc} width={240} height={240} />
+        <ArticleDescription description={description} />
+      </View>
+      <View style={styles.lowerWrapper}>
+        <Speedometer style={styles.speedometer} value={score} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  
-  //Fonts wird hier hinzugefügt
-  text: {
-  
-  },
-
-  //Farbe vom Button ist in der View
-  button: {
-  },
-
-  boxes: {
+  container: {
     flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
+
+  upperWrapper: {
+    flex: 3,
     alignItems: "center",
     justifyContent: "space-evenly",
-    flexDirection: "column",
-    backgroundColor: "#FFDA0A"
-
   },
-  //Falls man Titel und Beschreibung in getrennte Flexboxen haben möchte 
-  box1: {
 
-  }
+  articleName: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
+  lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },
 
-
+  speedometer: {
+    position: "absolute",
+    bottom: 0,
+  },
 });
