@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { COLORS } from "../constants/color.js";
 import ArticleList from "../components/ArticleList";
 import Chart from "../components/Chart";
 import BgButton from "../components/interaction/BgButton";
@@ -18,7 +19,7 @@ export default Tracker = (props) => {
         <BgButton text="total" onClick={() => setPeriod("total")} />
       </View>
       <Chart boughtArticles={articleData.boughtArticles} period={period} />
-      <Text style={styles.scoreText}>Your average CO2 Score: {articleData.average}</Text>
+      <Text style={styles.scoreText}>Average CO2 Score: {articleData.average}</Text>
       <ArticleList target={"Article Info"} articles={articleData.boughtArticles} />
     </View>
   );
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#aaf0d1",
+    backgroundColor: COLORS.main,
   },
 
   periodSelection: {
@@ -41,5 +42,6 @@ const styles = StyleSheet.create({
 
   scoreText: {
     marginTop: 10,
+    fontSize: 20,
   },
 });

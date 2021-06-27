@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
+import { COLORS } from "../constants/color.js";
 import { ArticleContext } from "../data/ArticleContext";
 import ArticleList from "../components/ArticleList";
 
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#aaf0d1",
+    backgroundColor: COLORS.main,
   },
 
   listWrapper: {

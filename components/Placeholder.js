@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default Placeholder = (props) => {
   return (
@@ -21,6 +21,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     textTransform: "capitalize",
-    //textDecorationLine: "underline",
   },
 });

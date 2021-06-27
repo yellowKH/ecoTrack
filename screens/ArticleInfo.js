@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
+import { COLORS } from "../constants/color.js";
 import { useRoute } from "@react-navigation/native";
 import { ArticleContext } from "../data/ArticleContext";
 import ArticleDescription from "../components/ArticleDescription";
@@ -39,7 +40,7 @@ export default ArticleInfo = (props) => {
     <View style={styles.container}>
       <View style={styles.upperWrapper}>
         <View style={styles.articleName}>
-          <Text>{title}</Text>
+          <Text style={styles.articleNameText}>{title}</Text>
           <Icon name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
         </View>
         <ArticleImage imgSrc={imgSrc} width={240} height={240} />
@@ -55,7 +56,7 @@ export default ArticleInfo = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.info,
   },
 
   upperWrapper: {
@@ -69,6 +70,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     width: "60%",
+  },
+
+  articleNameText: {
+    fontSize: 20,
   },
 
   lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { COLORS } from "../constants/color.js";
 import AfterScan from "../components/modals/AfterScan";
 import Speedometer from "../components/Speedometer";
 import BgButton from "../components/interaction/BgButton";
@@ -89,7 +90,7 @@ export default ScannedArticle = (props) => {
     <View style={styles.container}>
       <View style={styles.upperWrapper}>
         <View style={styles.articleName}>
-          <Text>{scannedArticle.title}</Text>
+          <Text style={styles.articleNameTest}>{scannedArticle.title}</Text>
           <Icon name={icon} type="font-awesome" color="#f50" onPress={() => updateFavArticlesHandler()} />
         </View>
         <View style={styles.interactionRow}>
@@ -116,6 +117,8 @@ export default ScannedArticle = (props) => {
         <View style={styles.quantitySelection}>
           <BgButton
             text="-"
+            buttonStyle={{ width: 40, height: 40 }}
+            buttonTextStyle={{ fontSize: 20 }}
             onClick={() => {
               if (quantity != 1) setQuantity(quantity - 1);
             }}
@@ -123,6 +126,8 @@ export default ScannedArticle = (props) => {
           <Text>{quantity}</Text>
           <BgButton
             text="+"
+            buttonStyle={{ width: 40, height: 40 }}
+            buttonTextStyle={{ fontSize: 20 }}
             onClick={() => {
               setQuantity(quantity + 1);
             }}
@@ -142,7 +147,7 @@ export default ScannedArticle = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.info,
   },
 
   upperWrapper: {
@@ -171,6 +176,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     width: "60%",
+  },
+
+  articleNameText: {
+    fontSize: 20,
   },
 
   lowerWrapper: { position: "relative", flex: 1, marginTop: 20 },

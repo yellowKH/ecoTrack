@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { COLORS } from "./constants/color.js";
 
 import Tracker from "./screens/Tracker";
 import ArticleInfo from "./screens/ArticleInfo";
@@ -51,15 +52,6 @@ function TrackerStackScreen() {
         component={TrackerScreen}
         options={{
           headerShown: false,
-          headerStyle: {
-            backgroundColor: "#3eb489",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            alignSelf: "center",
-            marginTop: 10,
-            marginBottom: 10,
-          },
         }}
       />
       <TrackerStack.Screen
@@ -67,13 +59,14 @@ function TrackerStackScreen() {
         component={ArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Bought Article",
         }}
@@ -97,13 +90,14 @@ function ScannerStackScreen() {
         component={ScannedArticleScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Scanned Article",
         }}
@@ -127,14 +121,14 @@ function FavoritesStackScreen() {
         component={FavArticleInfoScreen}
         options={{
           headerStyle: {
-            backgroundColor: "#7fffd4",
+            backgroundColor: COLORS.header,
           },
           headerTintColor: "#000000",
           headerTitleStyle: {
-            // fontWeight: 'bold',
             alignSelf: "center",
             marginTop: 10,
             marginBottom: 10,
+            marginRight: "20%",
           },
           title: "Favorized Article",
         }}
@@ -148,7 +142,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      tabBarOptions={{ style: { backgroundColor: "#7fffd4" } }}
+      tabBarOptions={{ style: { backgroundColor: COLORS.tab } }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => screenOptions(route, color),
       })}
